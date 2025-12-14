@@ -39,7 +39,7 @@ x = Math.abs(x);
 // Built-in constants
 x = Math.PI;
 
-// Generate a random number between 0 and 1
+// It will return a pseudorandom floating-point number between 0 (inclusive), and 1 (exclusive).
 x = Math.random();
 ```
 

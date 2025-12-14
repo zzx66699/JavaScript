@@ -81,3 +81,50 @@ A dictionary (lexicographical) order is applied.
 'a' === 'A';
 // => false
 ```
+
+## Template strings 
+It allows for embedding expressions in strings.   
+Backticks - (``) - are used to represent a template string.   
+The${...} is the placeholder that is used for substitution. 
+```js
+const num1 = 1;
+const num2 = 2;
+
+`Adding ${num1} and ${num2} gives ${num1 + num2}.`;
+// => Adding 1 and 2 gives 3.
+```
+  
+Any non-string types are implicitly converted to strings.  All types of expressions can be used with template strings.
+```js
+const track = 'JavaScript';
+
+`This track on exercism.org is ${track.toUpperCase()}.`;
+// => This track on exercism.org is JAVASCRIPT.
+```
+When you are needing to have strings formatted on multiple lines
+
+```js
+export function graduationFor(name, year) {
+  return `Congratulations ${name}!
+Class of ${year}`; 
+// need to start at the beginning of the line. JavaScript does not automatically remove indentation inside template strings.
+// The string value is exactly: "Congratulations Alice!\nClass of 2024"
+}
+```
+if you indent Class
+```js
+return `Congratulations ${name}!
+    Class of ${year}`;
+```
+Now the string literally contains four spaces before Class:  
+`"Congratulations Alice!\n    Class of 2024"`  
+Those spaces are printed as part of the output, causing indentation.  
+
+### Logic in the output
+An example of this is embedding a ternary operator. This operator is a short form for writing an if/else statement. The syntax is `condition ? consequent-expression : alternative-expression`. If the condition is truthy, the operand on the left-hand side of the colon will be returned. Otherwise, the result of the ternary expression is the operand on the right-hand side of the colon.
+```js
+const grade = 95;
+
+`You have ${grade > 90 ? 'passed' : 'failed'} the exam.`;
+// => You have passed the exam.
+```

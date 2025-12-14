@@ -15,7 +15,7 @@ for (let i = 0; i < list.length; i++) {
 For each item in an iterable object like Array, String. Not for `Object`.
 ```js
 // no condition after (let n of list)
-for (let n of list){
+for (let n of array){
 
 }
 ```

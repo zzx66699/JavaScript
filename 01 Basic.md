@@ -83,34 +83,37 @@ const PI = 3.1415926;
 ```
 
 
-## Function Declarations
-
+## When to write semicolon?
+If {} are part of a statement’s grammar, don’t write ;.  
+Blocks (if, for, while, function declaration)→ structural, no value → no semicolon
 ```js
-// In this example, the function name is add. It has two parameters, num1 and num2. 
-
-// Then the function add is called using two arguments: 1 and 3. 
-function add(num1, num2) {
-  return num1 + num2;
+if (x > 0) {
+  doSomething();
 }
 
-add(1, 3);
-// => 4
-```
-
-## export & import - Exposing to Other Files
-To make a function, a constant, or a variable available in other files, they need to be `exported` using the export keyword. Another file may then import these using the `import` keyword. This is also known as the module system.
-
-```js
-// file.js
-export const MY_VALUE = 10;
-
-export function add(num1, num2) {
-  return num1 + num2;
+for (let i = 0; i < 3; i++) {
+  console.log(i);
 }
 
-// file.spec.js
-import { MY_VALUE, add } from './file';
+while (x > 0) {
+  x--;
+}
 
-add(MY_VALUE, 5);
-// => 15
+switch (x) {
+  case 1:
+    break;
+}
+
+function foo() {
+  return 1;
+}
+
 ```
+If {} produce a value used in an expression, write ;.
+```js
+const obj = {
+  a: 1,
+  b: 2
+}; 
+```
+

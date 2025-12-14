@@ -114,3 +114,62 @@ for (let key in obj) {
 // a
 
 ```
+
+## Object destructure
+```js
+const weather = {
+  sun: '☀️',
+  sun_behind_small_cloud: '🌤️',
+  sun_behind_cloud: '⛅',
+  cloud: '☁️',
+  cloud_with_lightning: '🌩️',
+};
+
+// syntax sugar
+const { sun, cloud, cloud_with_lightning: thunder } = weather;
+
+// equals to
+const sun = weather["sun"];
+const cloud = weather["cloud"];
+const thunder = weather["cloud_with_lightning"];
+
+
+sun;
+// => '☀️'
+
+cloud;
+// => '☁️'
+
+thunder;
+// => '🌩️'
+```
+
+### Rest operator
+rest operator can be used to collect one or more object properties and store them in a single object.
+```js
+const { street, ...address } = {
+  postalCode: '11011',
+  street: 'Platz der Republik 1',
+  city: 'Berlin',
+};
+street;
+// => 'Platz der Republik 1'
+address;
+// => [  postalCode: '11011',
+//       city: 'Berlin']
+```
+
+### Spread operator
+It expands an object into a list of elements
+```js
+let address = {
+  postalCode: '11011',
+  city: 'Berlin',
+};
+address = { ...address, country: 'Germany' };
+// => {
+//   postalCode: '11011',
+//   city: 'Berlin',
+//   country: 'Germany',
+// }
+```

@@ -30,6 +30,15 @@ console.log(name);
 // => undefined
 ```
 
+The result of a function that returns no value or does not have a return statement is undefined. 
+```js
+function noReturn(a) {
+  a * 2;
+}
+
+noReturn(1);
+// => undefined
+```
 You can check whether a variable is undefined using the strict equality operator `===`.
 ```js
 let name;
@@ -56,6 +65,36 @@ export function ticketStatus(tickets, ticketId) {
   }
 }
 ```
+
+## null vs. undefined vs. ""
+In this example, if user doesn't type anything and click "ok", the userName is "";   
+if he clicks "cancel", the userName is null.
+```js
+let userName = "";
+
+while(userName == "" || userName == null){
+    userName = window.prompt("Enter your name");
+}
+
+console.log("Hello", userName);
+```
+
+``` js
+null == undefined // true 
+null == ""        // false
+null == 0         // false
+
+null === undefined // false
+
+if (null){
+  // will not run
+}
+
+if (""){
+  // will not run
+}
+```
+
 
 ## Optional Chaining
 If you try to retrieve a nested value in an object but the parent key does not exist, JavaScript will throw an error. To easily avoid this, optional chaining was added to the language specification in 2020. With the optional chaining operator ?. you can ensure that JavaScript only tries to access the nested key if the parent was not null or undefined. Otherwise, undefined is returned.
