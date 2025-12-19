@@ -68,3 +68,17 @@ while (i < 100) {
 
 }
 ```
+
+## The forEach Method
+Every array includes a `forEach` method that can be used to loop over the elements in the array.  
+There is no way to stop the iteration once the forEach loop was started. The statements break and continue do not exist in this context.
+```js
+const numbers = [6.0221515, 10, 23];
+
+numbers.forEach((number, index) => console.log(number, index));
+// => 6.0221515 0
+// => 10 1
+// => 23 2
+```
+
+

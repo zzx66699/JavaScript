@@ -3,11 +3,21 @@ In JavaScript, an array is a list-like structure with no fixed length which can 
 
 To create an array, add elements between square brackets []. 
 
+---------------------------------------------------------------
+## Pure methods - Don't modify the original array. 
+They return a new one instead.
+
 ## [] - Indexing
+It returns an element, no an sub-array.
 ```js
 const numbers = [1, 'two', 3, 'four'];
 numbers[2];
 // => 3
+```
+We can't use **[-index]** !!!
+```js
+numbers[-1];
+>>> undefined
 ```
 
 ## .length - Number of elements
@@ -18,6 +28,7 @@ numbers.length;
 ```
 
 ## array.slice(start, end)
+creates a `sub-array`
 ```js
 let arr = [1, 2, 3, 4, 5];
 
@@ -25,6 +36,14 @@ let part = arr.slice(1, 4);
 
 console.log(part); // [2, 3, 4]
 console.log(arr);  // [1, 2, 3, 4, 5]
+```
+it's ok to use -index in slice
+```js
+arr.slice(-1)
+>>> [5]
+
+arr.slice(-2)
+>>>[4, 5]
 ```
 
 ## Combine arrays
@@ -45,10 +64,120 @@ Correct way: Using spread operator
 When ... appears on the right-hand side of an assignment, it's known as the spread operator. It expands an array into `a list of elements`. 
 ```js
 const combined = [...myList, ...friendsList];
-
+```
+Example: Create a composition function that returns a function that combines two functions to perform a repeatable transformation
+@param {function} f the first function to apply  
+@param {function} g the second function to apply  
+@returns {function} a function which takes an x, y parameter, returns the transformed coordinate pair in the form [x, y]
+```js
+export function composeTransform(f, g) {
+  return function(x, y){
+    return g(...f(x,y)) // f(x,y) returns an object[]; g()needs 2 param; separate the object into 2 params
+  }
+}
 ```
 
-## Methods
+## .map()
+```js
+let arr = [1, 2, 3, 4];
+
+const newArr = arr.map((value) => value - 1);
+console.log(newArr);
+// => [0, 1, 2, 3]
+
+console.log(arr);
+// => [1, 2, 3, 4]
+```
+
+## .filter()
+```js
+let arr = [1, 2, 3, 4];
+
+arr.filter((value) => value % 2 === 0);
+// => [2, 4]
+```
+
+## .reduce (pure)
+Reduces the array into a single value using a function that takes an accumulator and the current element in the array as parameters.
+```js
+array.reduce((accumulator, currentValue) => newAccumulator, initialValue);
+
+let arr = [1, 2, 3, 4]
+
+// Get the sum of elements
+arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+
+// Classify the numbers by whether they are odd or not
+arr.reduce(
+  (accumulator, currentValue) => {
+    if (currentValue % 2 === 0) {
+      accumulator.even.push(currentValue);
+    } else {
+      accumulator.odd.push(currentValue);
+    }
+
+    return accumulator;
+  },
+  { even: [], odd: [] },
+);
+// => { even: [2, 4], odd: [1, 3] }
+```
+
+
+
+## Predicate - functions that returns boolean
+### .every() 
+```js
+const numbers = [1, 3, 5, 7, 9];
+numbers.every((num) => num % 2 !== 0);
+// => true
+```
+
+## .some()
+returns true if some of the element meet the requirement
+```js
+[1, 3, 5].some(n => n % 2 === 0); // false
+[1, 4, 5].some(n => n % 2 === 0); // true
+```
+
+### .includes() - determines whether an array includes a certain value
+```js
+const numbers = [1, 'two', 3, 'four']
+numbers.includes(1)
+>>> true
+
+numbers.includes("1")
+>>> false
+```
+
+## .find()
+It returns the `value` of the first element in the array that passes the predicate test. The method returns undefined when none of the elements in the array pass the predicate test.
+```js
+const numbers = [1, 3, 5, 7, 9];
+numbers.find((num) => num < 5);
+// => 1
+```
+
+## .findIndex()
+The findIndex(predicate) is the same as the find() method, but it returns the (first) `index` of the element that passes the predicate test instead of the value. The method returns -1 when none of the elements in the array pass the predicate test.
+```js
+const numbers = [1, 3, 5, 7, 9];
+numbers.findIndex((num) => num > 7);
+// => 4
+numbers.findIndex((num) => num > 9);
+// => -1
+```
+
+## .indexOf() - Get the first index of the value
+```js
+const numbers = [1, 'two', 3, 'four']
+numbers.indexOf(1)
+>>> 0
+```
+
+-------------------------------------------------------
+
+## Directly change the original array
 They are used to add or remove from the array. **Change the array itself!**
 ### [] = "" - Change
 To change an element in the array, you assign a value at the index:
@@ -57,6 +186,88 @@ const numbers = [1, 'two', 3, 'four'];
 numbers[0] = 'one';
 numbers;
 // => ['one', 'two', 3, 'four']
+```
+
+## .reverse()
+```js
+const arr = [1, 2, 3]
+arr.reverse();
+
+>>> [3, 2, 1]
+```
+
+## .sort()
+sorts the elements of an array by first converting them to `strings` and then applying string comparison   
+sort also `returns that modified array` which is convenient if you want to chain other methods to it.   
+
+```
+```js
+const arr = ['c', 'a', 'z', 'b'];
+const result = arr.sort();
+
+console.log(result);
+// => ['a', 'b', 'c', 'z']
+
+console.log(arr);
+// => ['a', 'b', 'c', 'z']
+```
+To customize the sorting behavior, you can pass a comparison function as an argument.   
+The comparison function itself is called with two arguments which are two elements of the array.   
+It then needs to return the following:
+- a negative number if the first argument should be sorted before the second
+- a positive number if the first argument should be sorted after the second
+- 0 if the order of the elements should stay the same
+
+
+Sort the number. 
+```js
+// without the customized sorting: it is sorting the string, not the number value!
+const arr = [10, 2, 30];
+
+arr.sort();
+
+arr;
+>>> [10, 2, 30]
+
+// the correct way
+arr.sort((a, b) => a - b) // sort from small to big
+arr.sort((a, b) => b - a) // sort from big to small
+```
+
+```js
+const arr = [
+  { name: 'Lydia', age: 7 },
+  { name: 'Anne', age: 34 },
+  { name: 'Holger', age: 59 },
+];
+
+// sort by lexicographical order
+arr.sort((item1, item2) => {
+  if (item1.name < item2.name) {
+    return -1;
+  }
+  if (item1.name > item2.name) {
+    return 1;
+  }
+  return 0;
+});
+
+// sort by age
+arr.sort((item1, item2) => item1.age - item2.age)
+
+// sort by age first, then name
+arr.sort((item1, item2) => {
+  if(item1.age == item2.age){
+    if (item1.name < item2.name) {
+    return -1;
+  }
+    if (item1.name > item2.name) {
+    return 1;
+  }
+    return 0;
+  }
+  return item1.age - item2.age;}
+)
 ```
 
 ### .push() & .unshift()  - Add element and return the length
@@ -93,6 +304,10 @@ numbers;
 
 ### array.splice(start, deleteCount, item1, item2, ...)
 The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. This method returns an `array` containing the deleted elements.
+```js
+array.splice(startIndex, deleteCount, item1, item2, ...)
+```
+
 ``` js
 // replace
 const numbers = [1, 'two', 3, 'four'];
@@ -102,9 +317,9 @@ numbers;
 
 // add
 const numbers = [1, 'two', 3, 'four'];
-numbers.splice(2, 0, 'one'); // => []
+numbers.splice(2, 0, 'one', 3); // => []
 numbers;
-// => [1, 'two', 'one', 3, 'four']
+// => [1, 'two', 'one', 3, 3, 'four']
 
 // delete
 const numbers = [1, 'two', 3, 'four'];

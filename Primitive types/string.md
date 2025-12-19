@@ -40,6 +40,14 @@ console.log(firstName)
 console.log(lastName)
 ```
 
+## .split
+```js
+const str = '2022-02-09';
+
+const result = str.split('-').at(-1);
+console.log(result); // '09'
+```
+
 ## .indexOf() & .lastIndexOf() - Find the index
 ```js
 let userName = "Jeane";
