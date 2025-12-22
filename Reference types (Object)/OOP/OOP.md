@@ -1,5 +1,5 @@
 ## Object
-Object: A value can attach properties if you can add a `property` to it and the value keeps it.
+Object: A value can attach properties if you can add a `property` to it and the value keeps it.  
 Property: key + value on obj  
 
 ```js

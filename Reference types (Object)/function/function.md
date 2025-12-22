@@ -21,37 +21,7 @@ function add(a, b) {
 }
 ```
 
-## Function Expression
-Function Expression is assigned to a variable and is not hoisted.  
-It is a function without name (anonymous function)
-The function does not exist independently — it only exists after it is assigned to add.
-```js
-// add is a variable. its whole value is a function. it refers to a function value
-const add = function (a, b) {
-  return a + b;
-};
 
-typeof add;  
->>> "function"
-
-```
-### Arrow function expression
-
-```js
-const addUpTwoNumbers = function(a1, a2){
-  return a1 + a2;
-}
-
-// same as
-// remove the function keyword, add =>
-const addUpTwoNumbers = (a1, a2) => {
-  return a1 + a2;
-}
-
-// same as 
-//If the function body contains only a return statement, the {} and the return keyword can be omitted. If there is only one parameter, the parenthesis () can be omitted as well.
-const addUpTwoNumbers = (a1, a2) => a1 + a2
-```
 
 ## export & import - Exposing to Other Files
 To make a function, a constant, or a variable available in other files, they need to be `exported` using the export keyword. Another file may then import these using the `import` keyword. This is also known as the module system.

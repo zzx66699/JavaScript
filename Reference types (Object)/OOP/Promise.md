@@ -1,7 +1,8 @@
 # Promise
 A Promise represents a value that will be available later. It is an object that stands for a future result of an async operation.
 
-## 3 states
+
+## 3 states & 2 parts
 ```
 Time →
 ┌───────────────┐        ┌───────────────┐
@@ -15,6 +16,71 @@ Time →
    │   (failure)   │
    └───────────────┘
 ```
+
+2 parts: producing and consuming
+
+## Examples
+### A simple flow
+#### producing codes
+- the first parameter corresponds to the internalResolve
+- the second parameter corresponds to the internalReject
+```js
+let promise = new Promise((resolve, reject) => {
+
+  let fileloaded = true; 
+
+  if(filedloaded){
+    // Whatever you pass to resolve becomes the value received by .then.
+    resolve("File loaded"); 
+  }
+  else{
+    reject("File not loaded")
+  }
+})
+```
+We can imagine this is happening in the internal.
+```js
+const internalResolve = function (value) {
+  // 1. mark the promise as fulfilled
+  // 2. store the value
+  // 3. schedule .then callbacks
+};
+
+const internalReject = function (error) {
+  // 1. mark the promise as rejected
+  // 2. store the error
+  // 3. schedule .catch callbacks
+};
+
+executor(internalResolve, internalReject);
+```
+#### consuming code
+if the promise is resolved, what we want to do
+```js
+// When fulfilled → call resolve with the stored value
+// when failed -> call reject function with the stored error
+promise.then(value => consolo.log(value))  
+       .catch(error => console.log(error))
+```
+
+### No value is stored
+```js
+const promise = new Promise(resolve => {
+  setTimeout(resolve, 5000); 
+});
+
+// Whatever the fulfilled value, It only cares about the promise is fulfilled. 
+// No argument is passed. 
+promise.then(() => console.log("Thanks for waiting!"))
+>>> Thanks for waiting!
+
+promise.then(value => {
+  console.log(value);
+});
+>>> undefined
+
+```
+
 
 ### pending — the starting state
 ```js
