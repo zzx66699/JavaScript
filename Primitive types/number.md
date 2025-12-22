@@ -72,3 +72,24 @@ null == undefined // true ❌
 // Not (strict) equals	
 a !== b
 ```
+
+## Number.isNaN()
+
+```JS
+value == NaN        // ❌ false
+value === NaN       // ❌  false
+value == "NaN"      // ❌ 
+NaN === NaN         // false
+
+Number.isNaN(value)  // ✅
+
+```
+
+## Number.isFinite()
+Implement the isNumber function, that checks if a value is a finite number or bigint, ie. not NaN or Infinity.
+
+```js
+export function isNumber(value) {
+  return (typeof value === "number" && Number.isFinite(value)) || (typeof value === "bigint") 
+}
+```

@@ -23,6 +23,7 @@ function add(a, b) {
 
 ## Function Expression
 Function Expression is assigned to a variable and is not hoisted.  
+It is a function without name (anonymous function)
 The function does not exist independently — it only exists after it is assigned to add.
 ```js
 // add is a variable. its whole value is a function. it refers to a function value
@@ -81,6 +82,35 @@ concat('one');
 concat('one', 'two', 'three');
 // => 'one two three'
 ```
+### Example
+```js
+function pizzaPrice(pizza, ...extras){
+  ...
+}
+```
+
+#### ① Call phase (outside the function)  
+```js
+pizzaPrice("Margherita", "ExtraSauce","ExtraToppings");
+```
+At this moment:
+- "ExtraSauce" is the second argument
+- "ExtraToppings" is the third argument  
+
+There is no variable called extras yet. These are just separate arguments passed to the function.
+ 
+#### ② Parameter binding phase (inside the function definition)
+```
+export function pizzaPrice(pizza, ...extras) {
+```
+
+The meaning of ...extras is: Collect all remaining arguments into an array and assign it to extras.
+
+So when the function starts executing, JavaScript automatically does this:
+```js
+extras = ["ExtraSauce", "ExtraToppings"];
+```
+
 
 ## Closures
 ```js

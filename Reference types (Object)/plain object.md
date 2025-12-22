@@ -33,21 +33,26 @@ const obj = {
 ```
 
 ## Retrieving a Value
-There are two ways to retrieve the value for a given key, dot notation and bracket notation.
+There are two ways to retrieve the value for a given key, dot notation and bracket notation.  
+- After the dot (.) is a literal property name.  
+- Inside brackets ([]) is a `variable` whose value is used as the property name.  
+
 ```js
 const obj = { greeting: 'hello world' };
 
 obj['greeting'];
 // => hello world
 
-// Using the dot notation as a shorthand has the same restriction as omitting the quotation marks. It only works if the key follows the identifier naming rules.
 obj.greeting;
 // => hello world
 
-// Bracket notation also works with variables.
+// Bracket notation also works with variables, but dot notation doens't 
 const key = 'greeting';
 obj[key];
 // => hello world
+
+obj.key // ❌ It is same as obj["key"]
+
 
 ```
 

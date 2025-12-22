@@ -14,7 +14,7 @@ name === null;
 // => true
 ```
 
-### Undefined
+## undefined
 A variable that has not been  `assigned a value` is of type undefined.
 That means while null represents an empty value (but still a value), undefined represents the total `absence` of a value. 
 
@@ -127,3 +127,4 @@ amount = 0;
 amount = amount ?? 1;
 // => 0
 ```
+

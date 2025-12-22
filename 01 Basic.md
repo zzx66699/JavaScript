@@ -183,3 +183,50 @@ A === C  // true
 true === true   // true
 
 ```
+
+## Template string
+```JS
+// Backtick + ${value}
+
+`text ${expression} text`
+```
+```JS
+return `Oops, it seems like I can't reach out to ${number}`
+```
+
+## Check the type of a value or object
+### typeof()
+The output is a string matching the name of one of the `primitive` data types, except for "null". It can also be "function" or "object".
+```js
+typeof undefined;
+// => "undefined"
+
+typeof NaN;
+// => "number"
+
+typeof 42n;
+// => "bigint"
+
+typeof function () {
+  return 'Hello, World';
+};
+// => "function"
+
+typeof [1, 2, 3, 4];
+// => "object"
+
+typeof { city: 'Stockholm', country: 'Sweden' };
+// => "object"
+
+typeof null;
+// => "object"
+```
+
+## Recursion
+Recursion occurs when a function calls itself, either directly or indirectly. It's similar to a loop, but it involves breaking a problem down into smaller, more manageable sub-problems.
+
+
+
+
+
+

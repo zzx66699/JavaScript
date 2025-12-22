@@ -123,8 +123,6 @@ arr.reduce(
 // => { even: [2, 4], odd: [1, 3] }
 ```
 
-
-
 ## Predicate - functions that returns boolean
 ### .every() 
 ```js
@@ -372,4 +370,18 @@ const [...items, last] = [0, 1, 1, 2, 3, 5, 8];
 
 >>> SyntaxError
 ```
+-------------------------------------------
+## Array.isArray()
+The Array class has a method called Array.isArray() that checks if its argument is an array.
+```js
 
+Array.isArray([1, 2, 3])      // true
+Array.isArray([])            // true
+
+Array.isArray({})            // false
+Array.isArray("hello")       // false
+Array.isArray(123)           // false
+Array.isArray(null)          // false
+Array.isArray(undefined)     // false
+
+```
