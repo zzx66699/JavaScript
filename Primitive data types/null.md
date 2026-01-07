@@ -67,18 +67,6 @@ export function ticketStatus(tickets, ticketId) {
 ```
 
 ## null vs. undefined vs. ""
-In this example, if user doesn't type anything and click "ok", the userName is "";   
-if he clicks "cancel", the userName is null.
-```js
-let userName = "";
-
-while(userName == "" || userName == null){
-    userName = window.prompt("Enter your name");
-}
-
-console.log("Hello", userName);
-```
-
 ``` js
 null == undefined // true 
 null == ""        // false
@@ -93,6 +81,20 @@ if (null){
 if (""){
   // will not run
 }
+
+In this example, if user doesn't type anything and click "ok", the userName is "";   
+if he clicks "cancel", the userName is null.
+```js
+let userName = "";
+
+while(userName == "" || userName == null){
+    userName = window.prompt("Enter your name");
+}
+
+console.log("Hello", userName);
+```
+
+
 ```
 
 

@@ -1,8 +1,21 @@
 # Array
-In JavaScript, an array is a list-like structure with no fixed length which can hold any type of primitives or objects, even `mixed` types.
+An array is an ordered list of items. To create an array, add elements between square brackets [].     
 
-To create an array, add elements between square brackets []. 
+It can hold any type of primitives or object(composite), even `mixed` types.  
+```js
+let myself = ["Jean", 27, true]
+```
+ 
+It is mutable.
 
+## Property functions
+## .length - Number of elements
+1 larger than the final index
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.length;
+// => 4
+```
 ---------------------------------------------------------------
 ## Pure methods - Don't modify the original array. 
 They return a new one instead.
@@ -20,12 +33,7 @@ numbers[-1];
 >>> undefined
 ```
 
-## .length - Number of elements
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.length;
-// => 4
-```
+
 
 ## array.slice(start, end)
 creates a `sub-array`

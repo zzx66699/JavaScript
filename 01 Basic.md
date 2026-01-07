@@ -8,6 +8,9 @@ let age = 26;
 // console.log add a space between each element
 console.log("Hello", firstName); 
 >>> Hello Jean
+
+console.log("Hello" + " " + firstName)
+>>> Hello Jean
 ```
 
 ## window.prompt()

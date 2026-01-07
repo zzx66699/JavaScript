@@ -1,26 +1,51 @@
+# Conditions
 ## if, else if, else statement
 ```js
 let age = 21;
 
-if(age >= 18){
+if (age >= 18) {
     console.log("You are an adult!");
-}
-else if(age <= 0){
+} else if (age <= 0) {
     console.log("YOU HAVEN'T BEEN BORN YET!")
-}
-else{
+} else {
     console.log("You are a child!");
 }
 ```
+
+## Convert into Boolean 
+The `if` statement evaluates the expression inside and coerces it into a boolean value. 
 ```js
 let online = True
 
-if(online){
+if (online) {
     console.log("You are online!")
 }
-else{
+else {
     console.log("You are offline!")
 }
+```
+
+## Falsy value
+```js
+if (""){
+  // will never run
+}
+```
+
+## Comparison
+```js
+//Strict Equals	
+// All numbers are floating-points, so this is different syntax for the exact same value.
+1 === 1.0;     // true
+5 === "5";     // false
+// Not (strict) equals	
+5 !== "5";     // true
+
+// Loose equals - This is not recommended because it will automatically change the data type
+5 == "5"       // true 
+true == 1      // true 
+"" == 0        // true 
+null == undefined // true 
 ```
 
 ## switch()
@@ -91,3 +116,4 @@ true || false   // true
 
 // && and
 ```
+

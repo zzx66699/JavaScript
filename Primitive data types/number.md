@@ -52,27 +52,6 @@ x = Math.random();
 4 % 3; // => 1
 ```
 
-## Comparison
-```js
-//Strict Equals	
-a === b
-
-1 === 1.0;// => true
-// All numbers are floating-points, so this is different syntax for the exact same value.
-
-
-// Loose equals - This is not recommended because it will automatically change the data type
-a == b 
-
-5 == "5"       // true ❌
-true == 1      // true ❌
-"" == 0        // true ❌
-null == undefined // true ❌
-
-// Not (strict) equals	
-a !== b
-```
-
 ## Number.isNaN()
 
 ```JS

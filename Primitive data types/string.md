@@ -1,11 +1,15 @@
 # String
-Strings are immutable in JavaScript. So a "modification" will always create a new string instead.
+Strings are immutable in JavaScript.
+```js
+let s = "hello";
+s[0] = "H";
+console.log(s); 
 
-## 1. Property 属性
-- Describes what something is / has
-- Reading it does not perform work
-- No parameters  
+>>> "hello"  // still hello
+```
 
+## 1. Property functions 属性
+These function just describes what something is / has. Reading it does not perform work. No parameters.  
 Strings are primitive values, but when you access a property, JavaScript temporarily wraps the string in a String object:
 ```js
 new String("hello").length
@@ -14,9 +18,9 @@ That wrapper object has properties like:
 - length
 - toUpperCase
 - slice  
+After the access, the wrapper is immediately discarded. This is why a primitive string can still have properties.  
 
-After the access, the wrapper is immediately discarded. This is why a primitive string can still have properties.
-## .length 
+### .length 
 ```js
 let userName = "Jean";
 console.log(userName.length); // no parentheses
