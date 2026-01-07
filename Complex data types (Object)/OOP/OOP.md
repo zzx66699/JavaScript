@@ -1,5 +1,6 @@
 ## Object
 Object: A value can attach properties if you can add a `property` to it and the value keeps it.  
+- method = A function on the object
 Property: key + value on obj  
 
 ```js
@@ -61,7 +62,7 @@ Car.prototype  (object)
 └── constructor : Car  
 ```
 
-method = property whose value is a function    
+
 In oop, the property (key) is either a field or a method.   
 If the value is a function, then it is a method;  
 Else, it is a field.

@@ -48,6 +48,17 @@ true == 1      // true
 null == undefined // true 
 ```
 
+## Logical operators (!, &&, ||) 
+```js
+// or
+true || false   // true
+
+// and
+true && false   // false
+```
+
+
+
 ## switch()
 It is a statement that examines a value for a match against many case clauses. More efficient than many "else if" statements. 
 The `break` statements are needed because by default all cases are "fallthrough" in JavaScript. Without break, it will have 2 outputs: the correct one and the default value.
@@ -107,13 +118,5 @@ switch(true){
         console.log(grade, "is not a letter grade!")
 
 }
-```
-
-## Logical operators (!, &&, ||) 
-```js
-// || or
-true || false   // true
-
-// && and
 ```
 

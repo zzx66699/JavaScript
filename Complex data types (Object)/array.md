@@ -33,8 +33,6 @@ numbers[-1];
 >>> undefined
 ```
 
-
-
 ## array.slice(start, end)
 creates a `sub-array`
 ```js
@@ -182,17 +180,52 @@ numbers.indexOf(1)
 ```
 
 -------------------------------------------------------
-
-## Directly change the original array
+## Change the original array
 They are used to add or remove from the array. **Change the array itself!**
+
 ### [] = "" - Change
 To change an element in the array, you assign a value at the index:
 ```js
 const numbers = [1, 'two', 3, 'four'];
 numbers[0] = 'one';
-numbers;
-// => ['one', 'two', 3, 'four']
+console.log(numbers);
+
+>>> ['one', 'two', 3, 'four']
 ```
+
+### .push() & .unshift()  - Add element and return the length
+The .push() method adds one or more elements to the `end` of an array and returns the new `length` of the array.
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.push(5); 
+console.log(numbers);
+
+>>>[1, 'two', 3, 'four', 5]
+```
+The unshift() method adds one or more elements to the `beginning` of an array and returns the new length of the array.4
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.unshift('one'); // => 5
+numbers;
+// => ['one', 1, 'two', 3, 'four']
+```
+
+### .pop() & .shift() - Remove and return the removed element
+The pop() method removes the `last` element from an array and returns that element. 
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.pop(); 
+console.log(numbers);
+>>> [1, 'two', 3]
+```
+The shift() method removes the `first` element from an array.
+```
+const numbers = [1, 'two', 3, 'four'];
+numbers.shift(); // => 1
+numbers;
+// => ['two', 3, 'four']
+```
+
 
 ## .reverse()
 ```js
@@ -276,37 +309,6 @@ arr.sort((item1, item2) => {
 )
 ```
 
-### .push() & .unshift()  - Add element and return the length
-The push() method adds one or more elements to the `end` of an array and returns the new `length` of the array.
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.push(5); // => 5
-numbers;
-// => [1, 'two', 3, 'four', 5]
-```
-The unshift() method adds one or more elements to the `beginning` of an array and returns the new length of the array.4
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.unshift('one'); // => 5
-numbers;
-// => ['one', 1, 'two', 3, 'four']
-```
-
-### .pop() & .shift() - Remove and return the removed element
-The pop() method removes the `last` element from an array and returns that element. 
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.pop(); // => four
-numbers;
-// => [1, 'two', 3]
-```
-The shift() method removes the `first` element from an array.
-```
-const numbers = [1, 'two', 3, 'four'];
-numbers.shift(); // => 1
-numbers;
-// => ['two', 3, 'four']
-```
 
 ### array.splice(start, deleteCount, item1, item2, ...)
 The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. This method returns an `array` containing the deleted elements.

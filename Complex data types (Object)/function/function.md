@@ -1,6 +1,5 @@
 # Function
 ## Function Declarations
-
 ```js
 // In this example, the function name is add. It has two parameters, num1 and num2. 
 
@@ -12,7 +11,9 @@ function add(num1, num2) {
 add(1, 3);
 // => 4
 ```
-Function Declarations can be hoisted - JavaScript moves declarations to the top of the scope before running the code.
+
+## Hoisted function declarations
+JavaScript moves declarations to the top of the scope before running the code.
 ```js
 add(1, 2); // ✅ works
 

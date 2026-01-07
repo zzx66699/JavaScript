@@ -1,12 +1,12 @@
 # Object
-only the type of the key is restricted: it has to be a `string`
+Only the type of the key is restricted: it has to be a `string`.  
+It is mutable.
 
 ## Creating an Object
-You create an object using curly brackets. You can also directly include some entries. For that, state the key first, followed by a colon and the value.
+You create an object using curly brackets. State the key first, followed by a colon and the value.
 ```js
-const emptyObject = {};
-
 const obj = {
+  //key           // value
   favoriteNumber: 42,
   greeting: 'Hello World',
   useGreeting: true,
@@ -21,40 +21,30 @@ const obj = {
 };
 ```
 
-keys are not wrapped in quotation marks although they are supposed to be strings. This is a short-hand notation. If the key follows the naming rules for a JavaScript identifier, you can omit the quotation marks. For keys with `special characters` in the name, you need to use the usual string notation.
-```js
-const obj = {
-  '1keyStartsWithNumber': '...',
-  'key/with/slashes': '...',
-  'key-with-dashes': '...',
-  'key with spaces': '...',
-  '#&()[]{}èä樹keyWithSpecialChars': '...',
-};
-```
-
-## Retrieving a Value
+## Retrieving a Value - dot notaion 
 There are two ways to retrieve the value for a given key, dot notation and bracket notation.  
-- After the dot (.) is a literal property name.  
-- Inside brackets ([]) is a `variable` whose value is used as the property name.  
-
 ```js
 const obj = { greeting: 'hello world' };
 
-obj['greeting'];
+obj["greeting"];
 // => hello world
 
 obj.greeting;
 // => hello world
+```
 
-// Bracket notation also works with variables, but dot notation doens't 
+Bracket notation also works with variables, but dot notation doens't 
+```js
 const key = 'greeting';
 obj[key];
 // => hello world
 
 obj.key // ❌ It is same as obj["key"]
 
-
 ```
+
+
+
 
 ## Adding or Changing a Value
 You can add or change a value using the assignment operator =. Again, there are dot and bracket notations available.

@@ -1,16 +1,18 @@
 # Loop
 ## for loop
 ```js
-for (initialization; condition; step) {
-	// code that is executed repeatedly as long as the condition is true
+const list = ['a', 'b', 'c'];
+//   start      finish           step
+for (let i = 0; i < list.length; i += 1) { 
+	console.log(list[i])
 }
 
-// ++ adds one to a number, -- subtracts one from a number.
-const list = ['a', 'b', 'c'];
+//   start      finish           step
 for (let i = 0; i < list.length; i++) { 
-	...
+	console.log(list[i])
 }
 ```
+
 
 For each item in an iterable object like Array, String. Not for `Object`.
 ```js
