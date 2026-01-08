@@ -216,14 +216,16 @@ The pop() method removes the `last` element from an array and returns that eleme
 const numbers = [1, 'two', 3, 'four'];
 numbers.pop(); 
 console.log(numbers);
+
 >>> [1, 'two', 3]
 ```
 The shift() method removes the `first` element from an array.
-```
+```js
 const numbers = [1, 'two', 3, 'four'];
-numbers.shift(); // => 1
-numbers;
-// => ['two', 3, 'four']
+numbers.shift(); 
+console.log(numbers);
+
+>>> ['two', 3, 'four']
 ```
 
 

@@ -13,25 +13,15 @@ console.log("Hello" + " " + firstName)
 >>> Hello Jean
 ```
 
-## window.prompt()
-```js
-let username = window.prompt("what's your name?"); // a pop up
-console.log(username);
-```
-
 ## Varible
-A variable is a container to store data
-
-Two steps:
+A variable is a container to store data in two steps:
 - Declaration (let, var, const)
 - Assignment (= assignment operator)
 
-```js
-let userName = "Jean"
-```
-
 ### Constant
-const is a variable that can't be reassigned once it has been declared.
+const is a variable that can't be reassigned once it has been declared.  
+``` If possible, use const. If not, use let. ```
+
 ```js
 const PI = 3.1415926;
 
@@ -40,14 +30,12 @@ PI = 20; // ❌ TypeError
 const does NOT mean “value never changes”  
 It means: The variable binding is constant, not the value itself    
 
-Example
 ```js
 const user = { name: "Alice" };
 ```
 
 This binding is fixed:   
 user ───▶ object A
-
 
 You cannot do:
 ```js
@@ -74,6 +62,14 @@ arr[0] = 99;   // ✅ allowed
 arr = [];      // ❌ NOT allowed
 
 ```
+
+## window.prompt()
+```js
+let username = window.prompt("what's your name?"); // a pop up
+console.log(username);
+```
+
+
 
 ## When to write semicolon?
 If {} are part of a statement’s grammar, don’t write ;.  
@@ -179,7 +175,54 @@ typeof null;
 ## Recursion
 Recursion occurs when a function calls itself, either directly or indirectly. It's similar to a loop, but it involves breaking a problem down into smaller, more manageable sub-problems.
 
+# Command
+## Normal comment
+```js
+// this is a normal comment
 
+/* this is also a normal comment */
+```
+
+## JSDoc
+```js
+/**
+ * @param {string} name
+ * @returns {number}
+ * @typedef {TYPE} Name
+ */
+```
+Example:  
+
+Translation is a {} object, it has 2 keys: translation and quality. 
+```js
+/**
+ * @typedef {{ translation: string, quality: number }} Translation
+ * /
+```
+
+TranslatableValues is a map like `Record<key, value>`.  
+key is a string, value is the an array. The array contains null or the Translation object. 
+```js
+ /**
+ * @typedef {Record<string, Array<null | Translation>>} TranslatableValues
+ */
+
+// An exmaple of TranslatableValues
+const values = {
+  title: [
+    { translation: "Hello", quality: 0.9 },
+    null
+  ],
+  description: [
+    { translation: "World", quality: 0.8 }
+  ],
+  footer: [
+    null,
+    null
+  ]
+};
+
+ ```
 
 
 

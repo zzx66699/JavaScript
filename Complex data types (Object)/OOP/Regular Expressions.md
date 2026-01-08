@@ -65,7 +65,7 @@ let regex = new RegExp(/[a-z]/, 'gi'); // constructor with regular expression li
 
 
 ## Escape character
-An escape character is used to give special meaning to characters that would otherwise be interpreted literally.
+The character is treated as a normal character (plain string), no special meaning like a syntax symbol.
 ```js
 \+  // The plus sign is escaped.
 \(

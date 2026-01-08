@@ -32,7 +32,7 @@ if (""){
 }
 ```
 
-## Comparison
+## Comparison operators
 ```js
 //Strict Equals	
 // All numbers are floating-points, so this is different syntax for the exact same value.
