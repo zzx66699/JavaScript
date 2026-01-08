@@ -1,4 +1,22 @@
-# Type Conversion
+# Type conversion
+## Get the type
+```js
+const y = 3
+console.log(y, typeof y);
+>>> 3 number
+```
+
+## Convert string to number
+```js
+                                    // input
+const numOne = document.getElementById("num-one")
+                                    // input
+const numOne = document.getElementById("num-two")
+const result = document.getElementById("result")
+
+result.textContent = `${numOne.value} + ${numTwo.value} = ${Number(numOne.value) + Number(numTwo.value)}`
+```
+
 ## String, number and boolean 
 ```js
 let age = window.prompt("How old are you?"); // window.prompt will return a string
