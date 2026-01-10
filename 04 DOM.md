@@ -89,6 +89,4 @@ myLeads = JSON.parse(myLeads)
 myLeads.push("www.baidu.com")
 // 3. Turn the array into a string again
 myLeads = JSON.stringify(myLeads)
-// 4. Console.log the string using typeof to verify that it's a string
-console.log(typeof myLeads)
 ```

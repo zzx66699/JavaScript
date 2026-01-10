@@ -1,15 +1,13 @@
 # Function
 ## Function Declarations
 ```js
-// In this example, the function name is add. It has two parameters, num1 and num2. 
-
-// Then the function add is called using two arguments: 1 and 3. 
+//           parameters
 function add(num1, num2) {
   return num1 + num2;
 }
-
+// arguments
 add(1, 3);
-// => 4
+>>> 4
 ```
 
 ## Hoisted function declarations
@@ -21,8 +19,6 @@ function add(a, b) {
   return a + b;
 }
 ```
-
-
 
 ## export & import - Exposing to Other Files
 To make a function, a constant, or a variable available in other files, they need to be `exported` using the export keyword. Another file may then import these using the `import` keyword. This is also known as the module system.
