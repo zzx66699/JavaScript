@@ -17,7 +17,8 @@ const result = document.getElementById("result")
 result.textContent = `${numOne.value} + ${numTwo.value} = ${Number(numOne.value) + Number(numTwo.value)}`
 ```
 
-## String, number and boolean 
+
+## String, number
 ```js
 let age = window.prompt("How old are you?"); // window.prompt will return a string
 
@@ -66,20 +67,4 @@ const result = arr.join("");
 //For objects, by default String returns an unhelpful text.
 String({ key: 'value' });
 // => '[object Object]'
-```
-
-```js
-z = Boolean(""); // empty string
-console.log(z, typeof z);
->>> false 'boolean'
-
-Boolean(" "); 
->>> true
-
-Boolean(0)
->>> false
-
-z = Boolean("12434"); // anything else
-console.log(z, typeof z);
->>> true 'boolean' // give you true
 ```

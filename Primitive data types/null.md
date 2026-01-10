@@ -1,4 +1,34 @@
 # null and undefined
+
+## Truthy and falsy values
+6 falsy values:
+```js
+// false
+// 0
+// ""
+// null -> how you as a developer signalize emptiness
+// undefined -> how JavaScript signalizes emptiness
+// NaN
+```
+
+## Convert to boolean to check truthy or falsy values
+```js
+console.log( Boolean(-0)) 
+>>> false
+
+console.log( Boolean(+0));
+>>> false
+
+console.log( Boolean("")); 
+>>> false 
+
+console.log( Boolean(" ")); 
+>>> true
+
+console.log( Boolean("12434")); 
+>>> true 
+```
+
 ## null
 The primitive value null is used as an intentional `"empty value"` for variables of any type.
 ```js
@@ -16,28 +46,28 @@ name === null;
 
 ## undefined
 A variable that has not been  `assigned a value` is of type undefined.
-That means while null represents an empty value (but still a value), undefined represents the total `absence` of a value. 
-
-undefined appears in different contexts.
-
-- If a variable is declared without a value (initialization), it is undefined.
-- If you try to access a value for a non-existing key in an object, you get undefined.
-- If a function does not return a value, the result is undefined.
-- If an argument is not passed to a function, it is undefined, unless that argument has a default value.
 ```js
 let name;
 console.log(name);
-// => undefined
+>>> undefined
 ```
-
+```js
+let currentViewers = {};
+console.log(currentViewers.name);
+>>> undefined
+```
+```js
+let currentViewers = ["Jean"];
+console.log(currentViewers[10];
+>>> undefined
+```
 The result of a function that returns no value or does not have a return statement is undefined. 
 ```js
 function noReturn(a) {
   a * 2;
 }
-
 noReturn(1);
-// => undefined
+>>>  undefined
 ```
 You can check whether a variable is undefined using the strict equality operator `===`.
 ```js

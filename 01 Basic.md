@@ -108,11 +108,14 @@ return `Congratulations ${name}!
 >>>     Class of 2024 
 ```
 
+
+
 ## window.prompt()
 ```js
 let username = window.prompt("what's your name?"); // a pop up
 console.log(username);
 ```
+
 
 ## When to write semicolon?
 If {} are part of a statement’s grammar, don’t write ;.  
@@ -177,15 +180,6 @@ true === true   // true
 
 ```
 
-## Template string
-```JS
-// Backtick + ${value}
-
-`text ${expression} text`
-```
-```JS
-return `Oops, it seems like I can't reach out to ${number}`
-```
 
 ## Check the type of a value or object
 ### typeof()
