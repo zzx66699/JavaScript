@@ -28,35 +28,28 @@ console.log(userName.length); // no parentheses
 >>> 4
 ```
 
-## .charAt() or [] - Indexing
+## [] - Indexing
 ```js
 let userName = "Jean Zhu";
-console.log(userName.charAt(0));
->>> J
 
 console.log(userName[0])
 >>> J
 
-// .charAt() doesn't accpet -1 as the arguement
-console.log(userName.charAt(-1)); // this is wrong. 
+//  doesn't accpet negative index as the arguement
+console.log(userName[-1]); 
+>>> undefined
 ```
 
-## & .slice() - slicing
+## & .slice()
 ```js
-let firstName;
-let lastName;
-
-firstName = userName.slice(0, 4) 
-lastName = userName.slice(5)  // without comma, it will take everything until the end
+let firstName = userName.slice(0, 4) 
+let lastName = userName.slice(5)  // without comma, it will take everything until the end
 
 
 let index;
 index = userName.indexOf(" ")
 firstName = userName.slice(0, index) 
 lastName = userName.slice(index+1)
-
-console.log(firstName)
-console.log(lastName)
 ```
 
 ## .split
