@@ -13,13 +13,9 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-
+## for of - a nicer way of iterating
 For each item in an iterable object like Array, String. Not for `Object`.
-```js
-// no condition after (let n of list)
-for (let n of array){
 
-}
 ```
 
 Example: Implement a function birdsInWeek that accepts an   `array-like` object of bird counts per day and a week number. It returns the total number of birds that you counted in that specific week. You can assume weeks are always tracked completely. e.g.

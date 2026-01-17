@@ -8,18 +8,6 @@ let myself = ["Jean", 27, true]
  
 It is mutable.
 
-## Property functions
-## .length - Number of elements
-1 larger than the final index
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.length;
-// => 4
-```
----------------------------------------------------------------
-## Pure methods - Don't modify the original array. 
-They return a new one instead.
-
 ## [] - Indexing
 It returns an element, no an sub-array.
 ```js
@@ -32,6 +20,17 @@ We can't use **[-index]** !!!
 numbers[-1];
 >>> undefined
 ```
+
+## .length - property
+1 larger than the final index
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.length;
+// => 4
+```
+
+---------------------------------------------------------------
+## Pure methods - Don't modify the original array. 
 
 ## array.slice(start, end)
 creates a `sub-array`
@@ -130,6 +129,18 @@ arr.reduce(
 ```
 
 ## Predicate - functions that returns boolean
+
+### .includes() - determines whether an array includes a certain value
+```js
+const numbers = [1, 'two', 3, 'four']
+numbers.includes(1)
+>>> true
+
+numbers.includes("1")
+>>> false
+```
+
+
 ### .every() 
 ```js
 const numbers = [1, 3, 5, 7, 9];
@@ -142,16 +153,6 @@ returns true if some of the element meet the requirement
 ```js
 [1, 3, 5].some(n => n % 2 === 0); // false
 [1, 4, 5].some(n => n % 2 === 0); // true
-```
-
-### .includes() - determines whether an array includes a certain value
-```js
-const numbers = [1, 'two', 3, 'four']
-numbers.includes(1)
->>> true
-
-numbers.includes("1")
->>> false
 ```
 
 ## .find()

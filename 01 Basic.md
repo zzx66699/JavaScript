@@ -62,11 +62,28 @@ arr[0] = 99;   // ✅ allowed
 arr = [];      // ❌ NOT allowed
 ```
 
-
-## window.prompt()
+## Import and export
 ```js
-let username = window.prompt("what's your name?"); // a pop up
-console.log(username);
+// file: data.js
+export const dinnerPartyGuests = [
+    'Elvis Presley', 
+    'The Queen of England',
+    'Alan Turing', 
+    'Nelson Mandela', 
+    'Mahatma Gandhi', 
+    'Aristotle',
+    'Albert Einstein'
+    ]
+```
+```html
+<body>
+    <script src="index.js" type="module"></script>
+</body>
+```
+```js
+// file: index.js
+import { dinnerPartyGuests } from "/data.js"
+console.log(dinnerPartyGuests)
 ```
 
 

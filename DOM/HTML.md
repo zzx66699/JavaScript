@@ -1,167 +1,93 @@
-# DOM
-`DOM manipulation comes with a cost!`
+# HTML
 
-## Write the HTML text
-```js
-// grab a hold of the box-btn and store it in a variable called boxBtn
-let boxBtn = document.getElementById("box-btn");
-boxBtn.textContent = "Open the box";
-```
-another way
-```js
-let boxBtn = document.getElementById("box-btn");
-// innerText will automatically remove the space between output elements
-boxBtn.innerText = "Open the box";
-```
-
-## Write the HTML element
-```js
-const container = document.getElementById("container")
-container.innerHTML = "<button onclick='buy()'>Buy!</button>"
-```
-```js
-let array = ["aa", "bb", "cc"]
-const ulEl = document.getElementById("ul-el");
-let lineItems = "";
-for (let i = 0; i < array.length; i++) {
-                       // not a string
-    lineItems += "<li>" + array[i] + "</li>"
-}
-// Run the DOM out of the loop to reduce the cost
-ulEl.innerHTML = lineItems;
-```
-
-
-## Get input value
-The value is always in the format of `string`!
-```js
-const input = document.getElementById("input");
-               // value property
-console.log(input.value);
-```
-
-## Clear input value
-```js
-const input = document.getElementById("input");
-    // value property
-input.value = "";
-```
-
-## Listen to the event
-```js
-let boxBtn = document.getElementById("box-btn");
-                     // event    function
-boxBtn.addEventListener("click", function() {
-    console.log("I want to open the box")
-})
-```
-
-## setTimeout - set the delay
-```js
-setTimeout(function(){
-    console.log("Hello. world!")
-// the delayed milliseconds 
-}, 3000)
-```
-
-
-## .disabled
+## Modern structure
 ```html
-<!-- set the decrement button as disabled by default -->
-<button id="decrement" class="decrement" disabled>-</button>
-```
-```css
-.decrement:disabled{
-    color: whitesmoke;
-    opacity: 0.2;
-    cursor: not-allowed;
-}
-```
+<body>
+    <header>
+        <div class="container">
+            ...
+        </div>
+    </header>
 
-```js
-const decrement = document.getElementById('decrement')
-const increment = document.getElementById('increment')
-const quantityDisplay = document.getElementById('quantity-display')
+    <section class="section-one">
+        <div class="container">
+            ...
+        </div>
+    </section>
 
-let quantity = 0
-
-decrement.addEventListener('click', function(){
-    quantity--
-    if (quantity === 0){
-        decrement.disabled = true
-    }     
-    quantityDisplay.innerText = quantity
-})
-
-increment.addEventListener('click', function(){
-    quantity ++
-    decrement.disabled = false
-    quantityDisplay.innerText = quantity
-})
+    <section class="section-two">
+        <div class="container">
+            ....
+        </div>
+    </section>
+</body>
 ```
 
-
-## Form
-### preventDefault 
-To prevent getting a query string in the URL.
+## viewport - adjust the width for different devides
 ```html
-<!-- give the whole form an id -->
-<form id="form">
-    <input type="text">Name
-    <input type="email">Email
-    <input type="number">Age
-</form>
-```
-```js
-const form = document.getElementById("form")
-
-// e represents the event, which is submit 
-// use form as the element, not the submit button
-form.addEventListener("submit", function(e){
-    e.preventDefault()
-})
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 ```
 
-### FormData - return an object holding all the forms data
-```js
-const loginForm = document.getElementById('login-form')
+## Core tags
+| Tag Name        | Meaning / Use                                                 | Attributes       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| `<p>`           | Paragraph of text.                                            |
+| `<div>`         | Division or container for grouping elements (block-level).    |
+| `<a>`           | Hyperlink (anchor).                                           | href target
+| `<img>`         | Image.                                                        | src
 
-loginForm.addEventListener('submit', function(e){
-    e.preventDefault()
+## Headings
+- Only use one `h1` per page. No more, no less.  
+- Heading numbers should be consecutive. No skip.   
+- Headings always introduce new content sections. A heading for some content should never be a `<p>` or a `<div>`.   
 
-    const loginFormData = new FormData(loginForm)
-    console.log(loginFormData)
-    >>> FormData {}
+| Tag Name        | Meaning / Use                                                 | Attributes       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| `<h1>` – `<h6>` | Headings — `<h1>` is the largest, `<h6>` the smallest.        |
 
-    // use FormData.get(key) to get the value
-    console.log(loginFormData.get("name"))
-    >>> Jean
-})
-```
+## Landmark regions
+| Tag Name        | Meaning / Use                                                 | Attributes       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| `<nav>`         | Navigation section (menu links).                              |
+| `<header>`      | Header section of a page or article.                          |
+| `<main>`        | The main content area.                                        |
+| `<section>`     | Logical section or topic block.                               |
+| `<footer>`      | Footer section.                                               |
 
-## Local storage
-Persist the data cross page refresh. You can only store  `string`!
-```js
-          // store   key     value
-localStorage.setItem("name", "Jean");
-                         // get the item
-const name = localStorage.getItem("name");
-console.log(name)
->>> name
+## Connected consecutive items
+| Tag Name        | Meaning / Use                                                 | Attributes       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| `<ul>`          | Unordered list (with bullet points).                          |
+| `<ol>`          | Ordered list (with numbers).                                  |
+| `<li>`          | List item (inside `<ul>` or `<ol>`).                          |
 
-        // clear the storage
-localStorage.clear()
-console.log(name)
->>> null
-```
 
-## Convert between string and array
-```JS
-let myLeads = `["www.awesomelead.com"]`
-// 1. Turn the myLeads string into an array
-myLeads = JSON.parse(myLeads)
-// 2. Push a new value to the array
-myLeads.push("www.baidu.com")
-// 3. Turn the array into a string again
-myLeads = JSON.stringify(myLeads)
-```
+
+| Tag Name        | Meaning / Use                                                 | Attributes       | Usage       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | ----------- | 
+| `<dl>`          | Description list.                                             |                  | metadata 
+| `<dt>`          | Description term (inside `<dl>`).                             |                  |
+| `<dd>`          | Description details (inside `<dl>`).                          |                  |
+
+
+| Tag Name        | Meaning / Use                                                 | Attributes       | Usage       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | ----------- | 
+| `<br>`          | Line break.                                                   |
+| `<hr>`          | Horizontal line (divider).                                    |
+
+
+## Formatting Elements
+
+| Tag Name        | Meaning / Use                                                 | Attributes       | Usage       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | ----------- | 
+| `<mark>`        | Highlight in yellow.                                          |                  | 
+| `<strong>`          |                            |                  |
+| `<b>`          |                           |                  |
+| `<i>`          |                           |                  |
+| `<em>`          |                           |                  |
+| `<del>`          | Deleted text.                          |                  |
+| `<ins>`          | Inserted text.                        |                  |
+| `<sub>`          |                        |                  |
+| `<sup>`          |                         |                  |
