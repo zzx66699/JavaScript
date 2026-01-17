@@ -9,7 +9,7 @@ console.log(s);
 ```
 
 
-## 1. Property functions 属性
+## 1. Property 属性
 These function just describes what something is / has. Reading it does not perform work. No parameters.  
 Strings are primitive values, but when you access a property, JavaScript temporarily wraps the string in a String object:
 ```js
@@ -102,8 +102,51 @@ A dictionary (lexicographical) order is applied.
 // => false
 ```
 
+## Template strings 
+It allows for embedding expressions in strings, and also break the string into lines. 
+Backticks - (``) - are used to represent a template string.   
+The `${...}` is to indicate the expression / variable.
+```js
+const num1 = 1;
+const num2 = 2;
+const sum = num1 + num2
+const result = "Adding " + num1 + " and " + num2 " gives " + sum + "."
+console.log(result)
+>>> Adding 1 and 2 gives 3.
 
+// or we can use a simpler way
+console.log(`Adding ${num1} and ${num2} gives ${num1 + num2}.`);
+>>> Adding 1 and 2 gives 3.
+```
+  
+`All` types of expressions can be used with template strings.
+```js
+const track = 'JavaScript';
 
+`This track on exercism.org is ${track.toUpperCase()}.`;
+// => This track on exercism.org is JAVASCRIPT.
+```
+
+When you are needing to have strings formatted on multiple lines
+```js
+export function graduationFor(name, year) {
+  return `Congratulations ${name}!
+Class of ${year}`; 
+
+>>> Congratulations Alice!
+>>> Class of 2024
+}
+```
+```js
+
+return `Congratulations ${name}!
+    Class of ${year}`;
+
+>>> Congratulations Alice!
+// Now the string literally contains four spaces before Class. 
+// Those spaces are printed as part of the output, causing indentation. 
+>>>     Class of 2024 
+```
 
 ### Logic in the output
 An example of this is embedding a ternary operator. This operator is a short form for writing an if/else statement. The syntax is `condition ? consequent-expression : alternative-expression`. If the condition is truthy, the operand on the left-hand side of the colon will be returned. Otherwise, the result of the ternary expression is the operand on the right-hand side of the colon.
@@ -113,3 +156,4 @@ const grade = 95;
 `You have ${grade > 90 ? 'passed' : 'failed'} the exam.`;
 // => You have passed the exam.
 ```
+

@@ -62,53 +62,6 @@ arr[0] = 99;   // ✅ allowed
 arr = [];      // ❌ NOT allowed
 ```
 
-## Template strings 
-It allows for embedding expressions in strings, and also break the string into lines. 
-Backticks - (``) - are used to represent a template string.   
-The `${...}` is to indicate the expression / variable.
-```js
-const num1 = 1;
-const num2 = 2;
-const sum = num1 + num2
-const result = "Adding " + num1 + " and " + num2 " gives " + sum + "."
-console.log(result)
->>> Adding 1 and 2 gives 3.
-
-// or we can use a simpler way
-console.log(`Adding ${num1} and ${num2} gives ${num1 + num2}.`);
->>> Adding 1 and 2 gives 3.
-```
-  
-`All` types of expressions can be used with template strings.
-```js
-const track = 'JavaScript';
-
-`This track on exercism.org is ${track.toUpperCase()}.`;
-// => This track on exercism.org is JAVASCRIPT.
-```
-
-When you are needing to have strings formatted on multiple lines
-```js
-export function graduationFor(name, year) {
-  return `Congratulations ${name}!
-Class of ${year}`; 
-
->>> Congratulations Alice!
->>> Class of 2024
-}
-```
-```js
-
-return `Congratulations ${name}!
-    Class of ${year}`;
-
->>> Congratulations Alice!
-// Now the string literally contains four spaces before Class. 
-// Those spaces are printed as part of the output, causing indentation. 
->>>     Class of 2024 
-```
-
-
 
 ## window.prompt()
 ```js
