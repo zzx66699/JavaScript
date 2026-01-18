@@ -5,7 +5,9 @@
 | --------------- | ------------------------------------------------------------- | ---------------- | 
 | `<label>`       | Label for a form element.                                     |
 | `<button>`      | Clickable button.                                             | type
-| `<input>`       | Input field (text box, checkbox, etc.).                       | type name placeholder  id aria-label
+| `<input>`       | Input field (text box, checkbox, etc.).                       | type name placeholder  id aria-label value
+| `<select>` and `<option>` and `<optgroup>`      | Dropdown buttons.                       | value selected size multiple
+
 
 ## Common validation attributes
 | Attributes        | Meaning / Use                                                 |    input type | 
@@ -113,6 +115,30 @@ continueBtn.addEventListener('click', function(){
         console.log("Terms refused!")         
     }
 })
+```
+
+## 4. select element - dropdown button
+```html
+<section class="container">
+    <form>
+        <label for="superpowers">Choose Your Superpower:</label>
+        <!--                     how many items shown in the scroll bar without scroll -->
+        <select id="superpowers" size="6">
+            <optgroup label="physical">
+                <option value="flight">Flight</option>
+                <option value="invisibility">Invisibility</option>
+                <option value="superStrength" selected>Super Strength</option>
+            </optgroup>
+            <optgroup label="psychological">
+                <option value="telepathy">Telepathy</option>
+                <option value="timeTravel">Time Travel</option>
+                <option value="wisdom">Wisdom</option>
+            </optgroup>
+        </select>
+
+        <button type="submit">Reveal My Superpower</button>
+    </form>
+</section>
 ```
 
 

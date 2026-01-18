@@ -29,8 +29,36 @@ numbers.length;
 // => 4
 ```
 
+### .includes() - determines whether an array includes a certain value
+```js
+const numbers = [1, 'two', 3, 'four']
+numbers.includes(1)
+>>> true
+
+numbers.includes("1")
+>>> false
+```
+
+## .filter()
+it is going through each of the element in an array and test one by one. 
+``` js
+const ages = [1, 5, 9, 23, 56, 10, 47, 70, 10, 19, 23, 18]
+
+//                         pass in a function, the parameter will be assign to each of the element in turn 
+const adults = ages.filter(function(age){
+    // don't forget the return 
+    return age >= 18
+})
+console.log(adults)
+
+//  it will return an array
+>>> [23, 56, 47, 70, 19, 23, 18]
+```
+
 ---------------------------------------------------------------
 ## Pure methods - Don't modify the original array. 
+
+
 
 ## array.slice(start, end)
 creates a `sub-array`
@@ -94,13 +122,7 @@ console.log(arr);
 // => [1, 2, 3, 4]
 ```
 
-## .filter()
-```js
-let arr = [1, 2, 3, 4];
 
-arr.filter((value) => value % 2 === 0);
-// => [2, 4]
-```
 
 ## .reduce (pure)
 Reduces the array into a single value using a function that takes an accumulator and the current element in the array as parameters.
@@ -130,15 +152,7 @@ arr.reduce(
 
 ## Predicate - functions that returns boolean
 
-### .includes() - determines whether an array includes a certain value
-```js
-const numbers = [1, 'two', 3, 'four']
-numbers.includes(1)
->>> true
 
-numbers.includes("1")
->>> false
-```
 
 
 ### .every() 
