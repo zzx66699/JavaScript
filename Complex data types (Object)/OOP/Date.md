@@ -1,16 +1,16 @@
 # Date
 
-## Date constructor function
-The Date constructor behaves differently depending on the type of argument you pass to it.
+## Date constructor 
+
 ### 1. No arguments → current time
 A date object is an `instance` of Date Class.  
-This results in a `Date object` that represents the current date and time. 
+
 ```js
 const now = new Date()
 console.log(now)
 
->>> 2025-12-19T07:22:54.426Z
-// // Shows current day, date and time (in your time zone).
+// Shows current day, date and time (in your time zone).
+>>> 2025-12-19T07:22:54.426Z  
 ```
 
 
