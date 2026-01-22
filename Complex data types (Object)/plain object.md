@@ -69,14 +69,19 @@ const weather = {
   cloud_with_lightning: '🌩️',
 };
 
-// syntax sugar
-const { sun, cloud, cloud_with_lightning: thunder } = weather;
+
+const { sun, 
+  cloud,  // By default, the variable names must match the property names
+  cloud_with_lightning: thunder   // or we can rename it by propertyName : newVariableName
+} = weather;
 
 // equals to
-const sun = weather["sun"];
-const cloud = weather["cloud"];
-const thunder = weather["cloud_with_lightning"];
+const sun = weather.sun
+const cloud = weather.cloud
+const thunder = weather.cloud_with_lightning
 ```
+
+
 
 
 

@@ -153,6 +153,61 @@ console.log(guestsArr.join(' '))
 ```
 
 
+## .reduce() method
+Reduces the array into a single value.  
+It takes an accumulator and the current element in the array as parameters. 
+```js
+let arr = [1, 2, 3, 4]
+
+// By default, accumulator will be the first element in the array, and currentValue will be the 2nd element from the beginning. 
+// then, the 2nd element is added up to the accumulator, and the 3nd element become the current Value.
+arr.reduce((total, currentValue) => total + currentValue)
+```
+### change the default total
+```js
+const studentsArr = [
+    {
+        name: 'Mike',
+        grade: 75
+    },
+    {
+        name: 'Emma',
+        grade: 83
+    },
+    {
+        name: 'Seth',
+        grade: 66
+    }
+]
+
+studentsArr.reduce((total, currentValue) => 
+  total + currentValue.grade, 0)   
+// 0 is the extra parameter for the reduce method. It means that the first total is 0, and the first curretnValue is the first element in the array
+```
+
+
+```js
+// Classify the numbers by whether they are odd or not
+arr.reduce(
+  (accumulator, currentValue) => {
+    if (currentValue % 2 === 0) {
+      accumulator.even.push(currentValue);
+    } else {
+      accumulator.odd.push(currentValue);
+    }
+
+    return accumulator;
+  },
+  { even: [], odd: [] },
+);
+// => { even: [2, 4], odd: [1, 3] }
+```
+
+
+
+
+
+
 ## array.slice(start, end)
 creates a `sub-array`
 ```js
@@ -205,31 +260,6 @@ export function composeTransform(f, g) {
 
 
 
-## .reduce (pure)
-Reduces the array into a single value using a function that takes an accumulator and the current element in the array as parameters.
-```js
-array.reduce((accumulator, currentValue) => newAccumulator, initialValue);
-
-let arr = [1, 2, 3, 4]
-
-// Get the sum of elements
-arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
-
-// Classify the numbers by whether they are odd or not
-arr.reduce(
-  (accumulator, currentValue) => {
-    if (currentValue % 2 === 0) {
-      accumulator.even.push(currentValue);
-    } else {
-      accumulator.odd.push(currentValue);
-    }
-
-    return accumulator;
-  },
-  { even: [], odd: [] },
-);
-// => { even: [2, 4], odd: [1, 3] }
-```
 
 ## Predicate - functions that returns boolean
 
@@ -361,6 +391,35 @@ arr.sort((item1, item2) => {
 )
 ```
 
+## Array destructuring
+It is a concise way to extract values from an array and assign them to distinct `variables`.
+
+```js
+const numberOfMoons = [0, 2, 14];
+const [venus, mars, neptune] = numberOfMoons;
+
+neptune;
+// => 14
+```
+Leaving a position unnamed (by not writing any variable name) silently ignores that position.
+```js
+const deck = [5, 9, 7, 1, 8];
+
+const [firstCard] = deck
+return firstCard;
+```
+Example: Elyse takes three cards and quickly moves the top card to the back, making the middle card the first card and the old bottom card the middle card. She doesn't need to call a single function.
+```js
+export function shiftThreeCardsAround(deck) {
+  const [firstCard, secondCard, thirdCard] = deck;
+  return [secondCard, thirdCard, firstCard];
+}
+```
+
+
+
+
+
 
 ### array.splice(start, deleteCount, item1, item2, ...)
 The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. This method returns an `array` containing the deleted elements.
@@ -388,30 +447,7 @@ numbers;
 // => [1, 'two']
 ```
 
-## Array destructuring
-It is a concise way to extract values from an array and assign them to distinct `variables`.
 
-```js
-const numberOfMoons = [0, 2, 14];
-const [venus, mars, neptune] = numberOfMoons;
-
-neptune;
-// => 14
-```
-Leaving a position unnamed (by not writing any variable name) silently ignores that position.
-```js
-const deck = [5, 9, 7, 1, 8];
-
-const [firstCard] = deck
-return firstCard;
-```
-Example: Elyse takes three cards and quickly moves the top card to the back, making the middle card the first card and the old bottom card the middle card. She doesn't need to call a single function.
-```js
-export function shiftThreeCardsAround(deck) {
-  const [firstCard, secondCard, thirdCard] = deck;
-  return [secondCard, thirdCard, firstCard];
-}
-```
 
 ### Rest operator
 When ... appears on the left-hand side of an assignment, those three dots are known as the rest operator. The three dots together with a variable name is called a `rest element`. It collects zero or more values, and stores them into a single array.  

@@ -62,16 +62,17 @@ export function birdsInWeek(birdsPerDay, week) {
 }
 ```
 
-## forEach() method
+## .forEach() method
+Use the forEach() method when you don't need to create a new array
 ```js
-//   			  pass in an anonymous function with a parameter, which will be each individual element in the array
+// pass in an anonymous function with a parameter, which will be each individual element in the array
 characters.forEach(function(character){
 	console.log(character)
 })
 ```
 
 ```js
-// 									   know the index of the element that you are working on
+// know the index of the element that you are working on
 characters.forEach(function(character, index){
     console.log(character, index)
 })
@@ -82,10 +83,41 @@ characters.forEach(function(character, index){
 2 Ogre
 3 Unicorn
 ```
+### return undefined error
+It doesn't return a new array! It returns `undefined`! We need to avoid using `return` in the forEach() function. 
+```js
+const playlistHtml = playlistArr.forEach(function(track){
+    return `
+    <section class="card">
+        <div class="card-start">
+            <img src="/images/${track.albumArt}">
+        </div>
+    </section>
+    `
+}).join('')
+
+console.log(playlistHtml)
+>>> undefined
+```
+The correct way is to create the array first and push element to the array. 
+```js
+const playlistHtml = []
+
+playlistArr.forEach(function(track){
+    playlistHtml.push( `
+    <section class="card">
+        <div class="card-start">
+            <img src="/images/${track.albumArt}">
+        </div>
+    </section>
+    `)
+})   // the join() method can't be chained here, because forEach() method returns undefined. 
+document.getElementById('container').innerHTML = playlistHtml.join('')  // the join() method should be chained here
+```
 
 ## .map() method 
 It gives us a new `array` and we're going to store the array in a const.   
-If we don't need a new array, we don't need to use map method.  
+If we don't need a new array it returns, we don't need to use map method.  
 ```js
 const distanceWalkedMilesArr = [140, 153, 161, 153, 128, 148]
 const conversionFactorMilesToKm = 1.6

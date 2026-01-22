@@ -1,5 +1,6 @@
 # Function
 ## Function Declarations
+JavaScript moves declarations to the top of the scope before running the code.
 ```js
 //           parameters
 function add(num1, num2) {
@@ -10,33 +11,75 @@ add(1, 3);
 >>> 4
 ```
 
-## Hoisted function declarations
-JavaScript moves declarations to the top of the scope before running the code.
-```js
-add(1, 2); // ✅ works
+## Function Expression
+Function Expression is assigned to a variable and is not hoisted.  
 
-function add(a, b) {
-  return a + b;
-}
+We need to declare a const and assign it with an anonymous function. 
+```js
+// in this example, the function returns nothing.  
+const greeting = function(){
+  console.log("Hello!");
+};
+
+console.log(greeting);
+>>> [Function: result]
+
+console.log(function(){
+  console.log("Hello!");
+})
+>>> [Function (anonymous)]
+
+// add () to invoke the function 
+console.log(greeting())   
+>>> Hello!  // this is from the console.log inside of the function
+>>> undefined  // nothing is returned, so it is undefined. 
+
+
+console.log(function(){
+  console.log("Hello!");
+}())
+>>> Hello!
+>>> undefined
+```
+If we add the `return`
+```js
+const greeting2 = function(){
+  return "Hello World!"
+};
+
+
+console.log(greeting())   
+>>> Hello World!
 ```
 
-## export & import - Exposing to Other Files
-To make a function, a constant, or a variable available in other files, they need to be `exported` using the export keyword. Another file may then import these using the `import` keyword. This is also known as the module system.
 
+## Arrow function expression
+- If the function body contains only a return statement, the {} and the return keyword can be omitted.   
+- More complex logic requires the {} and the return keyword
 ```js
-// file.js
-export const MY_VALUE = 10;
-
-export function add(num1, num2) {
-  return num1 + num2;
+const addUpTwoNumbers = function(a1, a2){
+  return a1 + a2
 }
 
-// file.spec.js
-import { MY_VALUE, add } from './file';
+// equals to 
+const addUpTwoNumbers = (a1, a2) => {
+  return a1 + a2
+}
 
-add(MY_VALUE, 5);
-// => 15
+// equals to 
+const addUpTwoNumbers = (a1, a2) => a1 + a2
 ```
+
+- If there is only `one` parameter, the parenthesis () can be omitted.   
+ 
+```js
+const multiply = a1 => a1 * 5
+```
+- 0 or 2 or more needs the parenthesis.   
+```js
+const zero = () => 0
+```
+
 
 ## Rest parameters
 When ... appears in a function definition next to its last argument, that parameter is called a rest parameter. It allows the function to accept an `indefinite number` of arguments as `an array`.
@@ -77,6 +120,9 @@ So when the function starts executing, JavaScript automatically does this:
 ```js
 extras = ["ExtraSauce", "ExtraToppings"];
 ```
+
+
+
 
 
 ## Closures

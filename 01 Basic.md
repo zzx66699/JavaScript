@@ -67,13 +67,19 @@ arr = [];      // ❌ NOT allowed
 // file: data.js
 export const dinnerPartyGuests = [
     'Elvis Presley', 
-    'The Queen of England',
-    'Alan Turing', 
-    'Nelson Mandela', 
-    'Mahatma Gandhi', 
-    'Aristotle',
-    'Albert Einstein'
+    'The Queen of England'
     ]
+
+export const shortSpaceTripsArr = [
+    {destination: 'Moon pass'},
+    {destination: 'Orbit the Earth'}]
+
+
+// or we can remove the export between each const, and put it here
+export { 
+  dinnerPartyGuests, 
+  shortSpaceTripsArr
+}
 ```
 ```html
 <body>
@@ -82,10 +88,28 @@ export const dinnerPartyGuests = [
 ```
 ```js
 // file: index.js
-import { dinnerPartyGuests } from "/data.js"
-console.log(dinnerPartyGuests)
+import { 
+  dinnerPartyGuests as guest, 
+  shortSpaceTripsArr as trip
+} from "/data.js"
+console.log(guests)
 ```
-
+### export default 
+One file can only have one default export.  
+We should change the file name and the function name to the same to avoid the confusion.   
+```js
+// getMatchingTripsArr.js
+export default function getMatchingTripsArr(arr, keyword){
+    return arr.filter(function(trip){
+        return trip.description.toLowerCase().includes(keyword)
+    })
+}
+```
+```js
+// index.js
+// we can use any name here, but in convention, we shoud keep the name same as the file name and the function name.  
+import getMatchingTripsArr from '/getMatchingTripsArr.js'
+```
 
 ## When to write semicolon?
 If {} are part of a statement’s grammar, don’t write ;.  

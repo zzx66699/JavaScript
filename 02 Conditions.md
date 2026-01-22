@@ -57,7 +57,45 @@ true || false   // true
 true && false   // false
 ```
 
+## Ternary operator
+This operator is a short form for writing an if/else statement.   
+The syntax is `condition ? consequent-expression : alternative-expression`.   
+If the condition is truthy, left expression will be executed. Otherwise, the right expression will be executed.  
 
+A common usage of ternary operator is to update the value of a variable depending on whether the condition is met.
+```js
+const grade = 95
+
+console.log(`You have ${grade > 90 ? 'passed' : 'failed'} the exam.`)
+
+// => You have passed the exam.
+```
+### 3 situations
+```js
+const exerciseTimeMins = 40
+let message = ''
+
+if (exerciseTimeMins < 30) {
+    message = 'You need to try harder!'
+}
+else if(exerciseTimeMins < 60) {
+    message = 'Doing good!'
+}
+else {
+    message = 'Excellent!'
+} 
+
+// equals to 
+const message = exerciseTimeMins < 30 ? 'You need to try harder!' 
+    : exerciseTimeMins < 60 ? 'Doing good!' 
+    : 'Excellent!'
+
+console.log(message)
+```
+### Don't assign any value
+```js
+const likeIconClass = tweet.isLiked ? 'liked' : ''
+```
 
 ## switch()
 It is a statement that examines a value for a match against many case clauses. More efficient than many "else if" statements. 
