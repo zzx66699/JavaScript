@@ -48,14 +48,6 @@ true == 1      // true
 null == undefined // true 
 ```
 
-## Logical operators (!, &&, ||) 
-```js
-// or
-true || false   // true
-
-// and
-true && false   // false
-```
 
 ## Ternary operator
 This operator is a short form for writing an if/else statement.   
@@ -97,24 +89,46 @@ console.log(message)
 const likeIconClass = tweet.isLiked ? 'liked' : ''
 ```
 
-## switch()
-It is a statement that examines a value for a match against many case clauses. More efficient than many "else if" statements. 
-The `break` statements are needed because by default all cases are "fallthrough" in JavaScript. Without break, it will have 2 outputs: the correct one and the default value.
-```js
-// case A || B is incorrect
-    case "A":
-    case "B":
-        ....
 
+## Logical operators (!, &&, ||) 
+```js
+// or
+true || false   // true
+
+// and
+true && false   // false
 ```
-Example: 
+### Short-circuiting - Use logical operator to assign value to a variable
+```js
+const jobHunter = {
+    name: 'Tom Chant',
+    jobSearchArea: 'Europe'
+}
+
+console.log(`${jobHunter.name}'s work location is ${jobHunter.jobSearchArea || 'Worldwide'}`)
+```
+```js
+const user = {
+    userName: 'Tom',
+    // role: 'admin',
+}
+// it works like an if considtion: if the left is true, then the right will be executed
+user.role === 'admin' && console.log('Dashboard Displayed')
+```
+
+
+## switch()
+It examines a value against many case clauses.   
+It's more efficient than many "else if" statements because we don't need to write `if variable = xxx` again and again. 
+
+Without `break`, it will have 2 outputs: the correct one and the default value.
+
 ```js
 let grade = "C";
 
 switch(grade){
     case "A":   // if grade = "A"
         console.log("You did well!");
-        
         break; 
     case "B":
         console.log("You did good!")
@@ -122,39 +136,9 @@ switch(grade){
     case "C":
         console.log("You did okay!")
         break;
-    case "D":
-        console.log("You passed ... barely")
-        break;
-    case "F":
-        console.log("Your FAILED!")
     default:
         console.log(grade, "is not a letter grade!")
-
 }
 ```
 
-```js
-let grade = 90;
-
-switch(true){
-    case grade >= 90:
-        console.log("You did well!");
-        break;
-    case grade >= 80:
-        console.log("You did good!")
-        break;
-    case grade >= 70:
-        console.log("You did okay!")
-        break;
-    case grade >= 60:
-        console.log("You passed ... barely")
-        break;
-    case grade >= 0:
-        console.log("Your FAILED!")
-        break;
-    default:
-        console.log(grade, "is not a letter grade!")
-
-}
-```
 
