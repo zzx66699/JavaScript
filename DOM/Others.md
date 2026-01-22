@@ -1,4 +1,4 @@
-# Local storage
+## Local storage
 Persist the data cross page refresh. You can only store  `string`!
 ```js
           // store   key     value
@@ -23,4 +23,10 @@ myLeads = JSON.parse(myLeads)
 myLeads.push("www.baidu.com")
 // 3. Turn the array into a string again
 myLeads = JSON.stringify(myLeads)
+```
+
+## UUID
+```js
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+console.log(uuidv4());
 ```

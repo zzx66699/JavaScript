@@ -7,6 +7,7 @@
 | `<button>`      | Clickable button.                                             | type
 | `<input>`       | Input field (text box, checkbox, etc.).                       | type name placeholder  id aria-label value
 | `<select>` and `<option>` and `<optgroup>`      | Dropdown buttons.                       | value selected size multiple
+| `<textarea>`   | Long inputs.                   | 
 
 
 ## Common validation attributes
@@ -91,6 +92,13 @@ Use `<fieldset>` and `<legend>` tags to group the set and provide the context fo
         class="contact-radio">
 </fieldset>
 ```
+```js
+const yesBtn = document.getElementById("yes")
+//                    for checked radio, the event is `change`
+yesBtn.addEventListen("change", function(){
+    ...
+})
+```
 
 ## 3. type="checkbox" 
 ```html
@@ -141,8 +149,38 @@ continueBtn.addEventListener('click', function(){
 </section>
 ```
 
+## 5. textarea
+```html
+<div class="container">
+    <textarea 
+        placeholder="Ask me anything!" 
+        id="chat-input"
+    ></textarea>        <!-- need to keep the opening tag and closing tag together in one line -->
+    <button id="talk-btn">Talk to me!</button>
+</div>
+```
 
-## Get input value
+```css
+textarea{
+    /* can't resize the text area */
+    resize: none;
+}
+```
+
+```js
+const talkBtn = document.getElementById('talk-btn')
+const chatInput = document.getElementById('chat-input')
+
+talkBtn.addEventListener('click', function(){
+
+    // same as the input, value property
+    console.log(chatInput.value)
+    chatInput.value = '' 
+})
+
+```
+
+### Get input value
 The value is always in the format of `string`!
 ```js
 const input = document.getElementById("input");
@@ -150,7 +188,7 @@ const input = document.getElementById("input");
 console.log(input.value);
 ```
 
-## Clear input value
+### Clear input value
 ```js
 const input = document.getElementById("input");
     // value property
@@ -158,25 +196,7 @@ input.value = "";
 ```
 
 
-## preventDefault 
-To prevent getting a query string in the URL.
-```html
-<!-- give the whole form an id -->
-<form id="form">
-    <input type="text">Name
-    <input type="email">Email
-    <input type="number">Age
-</form>
-```
-```js
-const form = document.getElementById("form")
 
-// e represents the event, which is submit 
-// use form as the element, not the submit button
-form.addEventListener("submit", function(e){
-    e.preventDefault()
-})
-```
 
 ## FormData - return an object holding all the forms data
 ```js

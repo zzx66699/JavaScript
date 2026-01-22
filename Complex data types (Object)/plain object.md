@@ -44,8 +44,6 @@ obj.key // ❌ It is same as obj["key"]
 ```
 
 
-
-
 ## Adding or Changing a Value
 You can add or change a value using the assignment operator =. Again, there are dot and bracket notations available.
 ```js
@@ -60,6 +58,27 @@ obj['new key 2'] = 'new value 2';
 const key = 'new key 3';
 obj[key] = 'new value 3';
 ```
+
+## Object destructure
+```js
+const weather = {
+  sun: '☀️',
+  sun_behind_small_cloud: '🌤️',
+  sun_behind_cloud: '⛅',
+  cloud: '☁️',
+  cloud_with_lightning: '🌩️',
+};
+
+// syntax sugar
+const { sun, cloud, cloud_with_lightning: thunder } = weather;
+
+// equals to
+const sun = weather["sun"];
+const cloud = weather["cloud"];
+const thunder = weather["cloud_with_lightning"];
+```
+
+
 
 ## Deleting an Entry
 You can delete a key-value pair from an object using the delete keyword.
@@ -110,34 +129,7 @@ for (let key in obj) {
 
 ```
 
-## Object destructure
-```js
-const weather = {
-  sun: '☀️',
-  sun_behind_small_cloud: '🌤️',
-  sun_behind_cloud: '⛅',
-  cloud: '☁️',
-  cloud_with_lightning: '🌩️',
-};
 
-// syntax sugar
-const { sun, cloud, cloud_with_lightning: thunder } = weather;
-
-// equals to
-const sun = weather["sun"];
-const cloud = weather["cloud"];
-const thunder = weather["cloud_with_lightning"];
-
-
-sun;
-// => '☀️'
-
-cloud;
-// => '☁️'
-
-thunder;
-// => '🌩️'
-```
 
 ### Rest operator
 rest operator can be used to collect one or more object properties and store them in a single object.

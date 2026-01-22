@@ -54,22 +54,7 @@ function logChosenSuperpower(e){
 ```
 
 
-## e.target - check which id is triggering the event
-```html
-<div id="container">
-    <button>A</button>
-    <button>B</button>
-    <button>C</button>
-</div>
-```
 
-```js
-let container = document.getElementById("container")
-
-container.addEventListener("click", function(e){
-    console.log(e.target.id)
-})
-```
 
 ## .parentElement
 ```js
@@ -159,3 +144,5 @@ increment.addEventListener('click', function(){
     quantityDisplay.innerText = quantity
 })
 ```
+
+## data- attribute

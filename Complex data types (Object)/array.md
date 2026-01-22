@@ -8,6 +8,15 @@ let myself = ["Jean", 27, true]
  
 It is mutable.
 
+## .length - property
+1 larger than the final index
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.length;
+// => 4
+```
+
+
 ## [] - Indexing
 It returns an element, no an sub-array.
 ```js
@@ -21,13 +30,15 @@ numbers[-1];
 >>> undefined
 ```
 
-## .length - property
-1 larger than the final index
+To change an element in the array, you assign a value at the index:
 ```js
 const numbers = [1, 'two', 3, 'four'];
-numbers.length;
-// => 4
+numbers[0] = 'one';
+console.log(numbers);
+
+>>> ['one', 'two', 3, 'four']
 ```
+
 
 ### .includes() - determines whether an array includes a certain value
 ```js
@@ -38,6 +49,7 @@ numbers.includes(1)
 numbers.includes("1")
 >>> false
 ```
+
 
 ## .filter()
 it is going through each of the element in an array and test one by one. 
@@ -55,9 +67,90 @@ console.log(adults)
 >>> [23, 56, 47, 70, 19, 23, 18]
 ```
 
----------------------------------------------------------------
-## Pure methods - Don't modify the original array. 
 
+### .push() & .unshift()  - Add element and return the length
+The .push() method adds one or more elements to the `end` of an array and returns the new `length` of the array.
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.push(5); 
+console.log(numbers);
+
+>>>[1, 'two', 3, 'four', 5]
+```
+The unshift() method adds one or more elements to the `beginning` of an array and returns the new length of the array.4
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.unshift('one'); // => 5
+numbers;
+// => ['one', 1, 'two', 3, 'four']
+```
+
+### .pop() & .shift() - Remove and return the removed element
+The pop() method removes the `last` element from an array and returns that element. 
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.pop(); 
+console.log(numbers);
+
+>>> [1, 'two', 3]
+```
+The shift() method removes the `first` element from an array.
+```js
+const numbers = [1, 'two', 3, 'four'];
+numbers.shift(); 
+console.log(numbers);
+
+>>> ['two', 3, 'four']
+```
+
+## Shallow copy objects and arrays
+When creating an const which holds an array of objects, JavaScript creates that array in memory. So the const `holds a reference` to the array in memory.   
+
+When we copy an object from that array, JS **will not create the object in the memory.** So the object also holds a reference to the original array in the memory. 
+
+When the object changes, the array in the memory changes, so the original const array also changes!
+```js
+const usersArray = [
+    {
+        userName: 'Tom',
+        password: '123456'
+    }
+]
+
+const userObj = usersArray[0]
+
+userObj.userName = "Wayne"
+
+console.log(usersArray)
+console.log(userObj)
+
+>>>
+
+[{userName: 'Wayne', password: '123456'}]
+{userName: 'Wayne', password: '123456'}
+```
+
+
+## .join() method
+concatenate elements of an array into a string and returns the new string
+```js
+const guestsArr = ['Amy', 'Clare', 'Keith', 'Dan'] 
+
+console.log(guestsArr.join(''))
+
+>>> AmyClareKeithDan
+```
+
+```js
+console.log(guestsArr.join('🐶'))
+
+>>> Amy🐶Clare🐶Keith🐶Dan
+```
+```js
+console.log(guestsArr.join(' '))
+
+>>> Amy Clare Keith Dan
+```
 
 
 ## array.slice(start, end)
@@ -108,18 +201,6 @@ export function composeTransform(f, g) {
     return g(...f(x,y)) // f(x,y) returns an object[]; g()needs 2 param; separate the object into 2 params
   }
 }
-```
-
-## .map()
-```js
-let arr = [1, 2, 3, 4];
-
-const newArr = arr.map((value) => value - 1);
-console.log(newArr);
-// => [0, 1, 2, 3]
-
-console.log(arr);
-// => [1, 2, 3, 4]
 ```
 
 
@@ -195,53 +276,7 @@ numbers.indexOf(1)
 ```
 
 -------------------------------------------------------
-## Change the original array
-They are used to add or remove from the array. **Change the array itself!**
 
-### [] = "" - Change
-To change an element in the array, you assign a value at the index:
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers[0] = 'one';
-console.log(numbers);
-
->>> ['one', 'two', 3, 'four']
-```
-
-### .push() & .unshift()  - Add element and return the length
-The .push() method adds one or more elements to the `end` of an array and returns the new `length` of the array.
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.push(5); 
-console.log(numbers);
-
->>>[1, 'two', 3, 'four', 5]
-```
-The unshift() method adds one or more elements to the `beginning` of an array and returns the new length of the array.4
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.unshift('one'); // => 5
-numbers;
-// => ['one', 1, 'two', 3, 'four']
-```
-
-### .pop() & .shift() - Remove and return the removed element
-The pop() method removes the `last` element from an array and returns that element. 
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.pop(); 
-console.log(numbers);
-
->>> [1, 'two', 3]
-```
-The shift() method removes the `first` element from an array.
-```js
-const numbers = [1, 'two', 3, 'four'];
-numbers.shift(); 
-console.log(numbers);
-
->>> ['two', 3, 'four']
-```
 
 
 ## .reverse()

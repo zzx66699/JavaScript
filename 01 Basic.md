@@ -220,7 +220,7 @@ const values = {
     { translation: "Hello", quality: 0.9 },
     null
   ],
-  description: [
+          cription: [
     { translation: "World", quality: 0.8 }
   ],
   footer: [
