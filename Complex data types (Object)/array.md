@@ -209,7 +209,7 @@ It expands an array into `a list of elements`.
 ```js
 const lunchMenu = ['Greek Salad', 'Open Sandwich']
 
-// it returns the element inside of the array
+// it returns the individual element inside of the array
 console.log(...lunchMenu)
 >>> "Greek Salad", "Open Sandwich"
 
@@ -222,6 +222,27 @@ spread operator is used as a good way to copy an array
 const testArr = [1, 2, '3']
 
 const testArrCopy = [...testArr]
+```
+### Find the max and min value in an array
+```js
+const averageSharePriceByMonthQ1 = [109.6, 103.3, 89.4]
+const averageSharePriceByMonthQ2 = [109.3, 126.1, 103.3]
+const averageSharePriceByMonthQ3 = [120.8, 102.3, 106.8]
+const averageSharePriceByMonthQ4 = [110.9, 119.8, 113.7]
+
+function findPriceExtremes(arr){
+    const highest = Math.max(...arr) // it takes a sequence of individual numbers
+    const lowest = Math.min(...arr)
+    console.log(`The highest average share price was ${highest}`)
+    console.log(`The lowest average share price was ${lowest}`)
+}
+
+findPriceExtremes([
+    ...averageSharePriceByMonthQ1,
+    ...averageSharePriceByMonthQ2,
+    ...averageSharePriceByMonthQ3,
+    ...averageSharePriceByMonthQ4
+])
 ```
 
 
@@ -265,12 +286,10 @@ totalList
 Correct way: Using spread operator
 
 
-```
 
 
 
 
-## Predicate - functions that returns boolean
 
 
 
