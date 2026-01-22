@@ -81,45 +81,34 @@ const zero = () => 0
 ```
 
 
-## Rest parameters
-When ... appears in a function definition next to its last argument, that parameter is called a rest parameter. It allows the function to accept an `indefinite number` of arguments as `an array`.
+## ...name - Rest parameters 
+We got a function that takes in parameters but we don't know how many arguments that is going to be passed to it.   
+
+It captures all the arguments which don't explicitly  match an exsiting parameter. 
+
+All the rest arguments will be wrapped in an `array`. 
+
+```js
+function setPermissionLevel(permissionLevel, ...names) {
+    names.forEach((name)=> 
+      console.log(`${name} now has ${permissionLevel} level access.`))   
+}
+
+setPermissionLevel('admin', 'Dave', 'Sally', 'Mike', 'Clare')
+```
+
 ```js
 function concat(...strings) {
   return strings.join(' ');
 }
+
 concat('one');
 // => 'one'
+
 concat('one', 'two', 'three');
 // => 'one two three'
 ```
-### Example
-```js
-function pizzaPrice(pizza, ...extras){
-  ...
-}
-```
 
-#### ① Call phase (outside the function)  
-```js
-pizzaPrice("Margherita", "ExtraSauce","ExtraToppings");
-```
-At this moment:
-- "ExtraSauce" is the second argument
-- "ExtraToppings" is the third argument  
-
-There is no variable called extras yet. These are just separate arguments passed to the function.
- 
-#### ② Parameter binding phase (inside the function definition)
-```
-export function pizzaPrice(pizza, ...extras) {
-```
-
-The meaning of ...extras is: Collect all remaining arguments into an array and assign it to extras.
-
-So when the function starts executing, JavaScript automatically does this:
-```js
-extras = ["ExtraSauce", "ExtraToppings"];
-```
 
 
 

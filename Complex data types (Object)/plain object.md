@@ -81,6 +81,20 @@ const cloud = weather.cloud
 const thunder = weather.cloud_with_lightning
 ```
 
+## Spread operator
+It expands an object into a list of elements
+```js
+let address = {
+  postalCode: '11011',
+  city: 'Berlin',
+};
+address = { ...address, country: 'Germany' };
+// => {
+//   postalCode: '11011',
+//   city: 'Berlin',
+//   country: 'Germany',
+// }
+```
 
 
 
@@ -151,17 +165,3 @@ address;
 //       city: 'Berlin']
 ```
 
-### Spread operator
-It expands an object into a list of elements
-```js
-let address = {
-  postalCode: '11011',
-  city: 'Berlin',
-};
-address = { ...address, country: 'Germany' };
-// => {
-//   postalCode: '11011',
-//   city: 'Berlin',
-//   country: 'Germany',
-// }
-```

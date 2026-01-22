@@ -204,6 +204,29 @@ arr.reduce(
 ```
 
 
+## Spread operator - expand and join arrays
+It expands an array into `a list of elements`. 
+```js
+const lunchMenu = ['Greek Salad', 'Open Sandwich']
+
+// it returns the element inside of the array
+console.log(...lunchMenu)
+>>> "Greek Salad", "Open Sandwich"
+
+console.log(lunchMenu)
+>>> ["Greek Salad", "Open Sandwich"]
+```
+### Copy of an array
+spread operator is used as a good way to copy an array
+```js
+const testArr = [1, 2, '3']
+
+const testArrCopy = [...testArr]
+```
+
+
+
+
 
 
 
@@ -241,21 +264,7 @@ totalList
 ```
 Correct way: Using spread operator
 
-### Spread operator
-When ... appears on the right-hand side of an assignment, it's known as the spread operator. It expands an array into `a list of elements`. 
-```js
-const combined = [...myList, ...friendsList];
-```
-Example: Create a composition function that returns a function that combines two functions to perform a repeatable transformation
-@param {function} f the first function to apply  
-@param {function} g the second function to apply  
-@returns {function} a function which takes an x, y parameter, returns the transformed coordinate pair in the form [x, y]
-```js
-export function composeTransform(f, g) {
-  return function(x, y){
-    return g(...f(x,y)) // f(x,y) returns an object[]; g()needs 2 param; separate the object into 2 params
-  }
-}
+
 ```
 
 
