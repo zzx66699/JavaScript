@@ -1,17 +1,44 @@
-# Date
+# Date() constructor 
 
-## Date constructor 
-
-### 1. No arguments → current time
+## No arguments → current time
 A date object is an `instance` of Date Class.  
 
 ```js
 const now = new Date()
-console.log(now)
 
-// Shows current day, date and time (in your time zone).
+console.log(now)
+// Shows current day, date and time (in your time zone). It is an object.
 >>> 2025-12-19T07:22:54.426Z  
+
+console.log(now.toString())
+>>> Thu Jul 27 2023 13:54:08 GMT+0100 (British Summer Time)
 ```
+
+
+## Accessing Date components
+```js
+getTime(); // returns the UNIX timestamp in milliseconds, ie. amount of milliseconds the midnight at the beginning of January 1, 1970, UTC.
+
+getFullYear(); // Get the year (4 digits)
+getMonth(); // Get the month, from 0 to 11.
+getDate(); // Get the day of month, from 1 to 31.
+getHours(); // Get the hour in a 24 clock, from 0 to 23
+getMinutes(); // Get the minutes, from 0 to 59
+getSeconds(); // Get the seconds, from 0 to 59
+getMilliseconds(); // Get the milliseconds, from 0 and 999
+getDay(); // Get the day of week, from 0 (Sunday) to 6 (Saturday).
+```
+```js
+const date = new Date('2025-02-28T12:42:00Z');
+// => Fri Feb 28 2025 13:42:00 GMT+0100 (Central European Standard Time)
+
+date.getDate();
+// => 1
+```
+
+
+
+
 
 
 ### 2. Unix timestamp(number) → interpreted time
@@ -72,29 +99,6 @@ const t2 = new Date(t1);
 // t1 and t2 are different objects
 ```
 
-## Accessing Date components
-```js
-getTime(); // returns the UNIX timestamp in milliseconds, ie. amount of milliseconds the midnight at the beginning of January 1, 1970, UTC.
-
-getFullYear(); // Get the year (4 digits)
-getMonth(); // Get the month, from 0 to 11.
-getDate(); // Get the day of month, from 1 to 31.
-getHours(); // Get the hour in a 24 clock, from 0 to 23
-getMinutes(); // Get the minutes, from 0 to 59
-getSeconds(); // Get the seconds, from 0 to 59
-getMilliseconds(); // Get the milliseconds, from 0 and 999
-getDay(); // Get the day of week, from 0 (Sunday) to 6 (Saturday).
-```
-```js
-const date = new Date('2025-02-28T12:42:00Z');
-// => Fri Feb 28 2025 13:42:00 GMT+0100 (Central European Standard Time)
-
-date.getDate();
-// => 1
-
-date.toString();
-// => Sat Mar 01 2025 13:42:00 GMT+0100 (Central European Standard Time)
-```
 
 ## Comparing Dates
 Greater than (>) and greater than or equals (>=) as well as less than (<) and less than or equals (<=) can be used directly between two dates or a date and a number.   

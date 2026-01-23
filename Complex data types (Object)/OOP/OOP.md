@@ -1,15 +1,65 @@
-## Object
-Object: A value can attach properties if you can add a `property` to it and the value keeps it.  
-- method = A function on the object
-Property: key + value on obj  
+# OOP
 
-```js
-// object
-const obj = {};
-obj.a = 1;
+## Object with methods and this
+``` js
+// If we change the gamer name, we will also need to change the object name in the incrementScore method
+const gamer = {
+    name: 'Dave',
+    score: 0,
+    incrementScore: function(){
+        gamer.score++   
+    }
+}
 
-// property = ("a", 1) on obj
+// to make it eeasier, we can use `this` to represent the whole object
+const gamer = {
+    name: 'Dave',
+    score: 0,
+    incrementScore: function(){
+        this.score++   
+    }
+}
 ```
+
+
+## Objects to Constructor functions
+We uppercase the first letter to show it is a constructor
+```js
+function Gamer(name, score){
+	this.name = name
+	this.score = score
+	this.incrementScore = function(){
+		this.score++
+	}
+}
+
+const dave = new Gamer('Dave', 0)
+dave.incrementScore()
+```
+
+
+## Class syntax
+It is not hoisted
+```js
+class Gamer {
+	constructor(name, score){
+		this.name = name
+		this.score = score
+	}
+	incrementScore(){
+		this.score++
+	}
+}
+
+const dave = new Gamer('Dave', 0)
+dave.incrementScore()
+```
+
+
+
+
+
+
 array is also an object
 ```js
 // array
@@ -27,45 +77,8 @@ f.x = 42;
 console.log(f.x); // 42
 ```
 
----------------------------------------------------------------------
-## Legacy: Prototype syntax
-``` js
-function Car(color) {
-  // different instances have different colors. so color is stored on this.
-  this.color = color;     
-}
- 
-// difference instances perform the same behaviour for the start.(shared behaviour) so we put start under prototype. 
-Car.prototype.start = function () {   
-  console.log('start');
-};
-
-const myCar = new Car('red');
-```
-### Prototype
-Prototype: Only function has prototype. It is a property of function. Prototype has its own properties. (methods)
-```js
-Car.prototype
-```
-It has 2 layers:   
-**First layer**: Car is an object. prototype is a property on "car" obj.  
-```
-Car (object)  
-└── prototype :  <value>  
-```
-
-**Second layer**: prototype itself also contains properties.
-```
-Car.prototype  (object)  
-├── startEngine : function  
-├── addGas      : function  
-└── constructor : Car  
-```
 
 
-In oop, the property (key) is either a field or a method.   
-If the value is a function, then it is a method;  
-Else, it is a field.
 
 
 ```js
@@ -107,25 +120,6 @@ tigerA.eat(20)
 console.log(tigerA.weight)
 ```
 
-## Class syntax
-   
-```js
-class Car{
-    constructor(color){         // color is the argument
-        this.color = color;     // field
-        this.age = 0;           // field
-        this.brand = function(){ // method
-            console.log("qq")
-        }
-    }
-
-    start(){                    // method
-        console.log("start!");
-    }
-}
-
-const myCar = new Car('red');
-```
 
 
 ## instanceof
