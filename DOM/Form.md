@@ -1,4 +1,5 @@
 # Form
+Form elements don't inherit font-settings in css.
 
 ## Common tags
 | Tag Name        | Meaning / Use                                                 | Attributes       | 
