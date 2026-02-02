@@ -103,3 +103,9 @@ document.addEventListener('click', function(e) {
 })
 ```
 
+
+## e.target.closest(".classname")
+search from the **element that cause the event** and to its parent and grandparent and ... elements, until find the element whose class is the one we need
+```js
+const form = e.target.closest(".dictation-form")
+```

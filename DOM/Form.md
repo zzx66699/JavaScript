@@ -126,7 +126,7 @@ continueBtn.addEventListener('click', function(){
 })
 ```
 
-## 4. select element - dropdown button
+## 4. Dropdown button
 ```html
 <section class="container">
     <form>
@@ -148,6 +148,16 @@ continueBtn.addEventListener('click', function(){
         <button type="submit">Reveal My Superpower</button>
     </form>
 </section>
+```
+```js
+const superPowers = document.getElementById("superpowers")
+
+//                          select the value action
+superPowers.addEventListener("change", () => {
+//                                     the value selected
+    location.href = `./unit.html?unit=${unitSelect.value}`
+})
+
 ```
 
 ## 5. textarea
