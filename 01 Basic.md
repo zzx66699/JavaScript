@@ -108,7 +108,12 @@ export default function getMatchingTripsArr(arr, keyword){
 ```js
 // index.js
 // we can use any name here, but in convention, we shoud keep the name same as the file name and the function name.  
-import getMatchingTripsArr from '/getMatchingTripsArr.js'
+import getMatchingTripsArr from './getMatchingTripsArr.js'
+```
+## import from my own file
+We should use `./` to indicate that I'm importing this from my own file and it is not from a third party package.
+```jsx
+import Header from "./Header.jsx"
 ```
 
 ## When to write semicolon?

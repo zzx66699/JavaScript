@@ -33,6 +33,18 @@ for (let i = 0; i < array.length; i++) {
 ulEl.innerHTML = lineItems;
 ```
 
+Without the innerHTML, we will need to use createElement and appendChild to do the same thing
+### createElement
+```js
+const h1 = document.createElement("h1")
+h1.textContent = "This is imperative coding"
+h1.className = "header"
+```
+### appendChild
+```js
+document.getElementById("root").appendChild(h1)
+```
+
 ## Listen to the event
 Anonymous function
 ```js
@@ -53,6 +65,28 @@ function logChosenSuperpower(e){
 }
 ```
 
+## .querySelector()
+### Psuodo selector
+```js
+submitBtn.addEventListener('click', function(){
+    //                          it allows us to select by the psuodo selector
+    const checkedRadio = document.querySelector('input[type="radio"]:checked')
+    console.log(checkedRadio.value)
+})
+```
+### Class selector
+```js
+const box = document.querySelector(".box");
+```
+### id selector
+```js
+const header = document.querySelector("#header");
+```
+### Label selector
+```js
+// it will select the first p element
+const firstParagraph = document.querySelector("p");
+```
 
 
 
@@ -93,14 +127,7 @@ clearBtn.addEventListener('click', function(){
 })
 ```
 
-## .querySelector()
-```js
-submitBtn.addEventListener('click', function(){
-    //                          it allows us to select by the psuodo selector
-    const checkedRadio = document.querySelector('input[type="radio"]:checked')
-    console.log(checkedRadio.value)
-})
-```
+
 
 ## setTimeout - set the delay
 ```js
