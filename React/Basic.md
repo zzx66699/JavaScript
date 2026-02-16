@@ -1,9 +1,9 @@
 # Basic
 
 ## The process of JSX
-1. turn the JSX syntax into calls to react.createElement
-2. createElement function is turning them into javascript object 
-3. then React is able to interpret it and turn it into real dom nodes under the hood. 
+1. turn the JSX syntax(JSX elements) into calls to react.createElement  
+2. createElement function is turning them into **javascript object**   
+3. then React is able to interpret it and turn it into real dom nodes under the hood.   
 ```js
 import { createRoot } from "react-dom/client"
 
@@ -17,6 +17,22 @@ console.log(reactElement)
 root.render(
     reactElement
 )
+```
+React can't render an regular object, but it can render an `array` of jsx element.
+```jsx
+export default function App() {
+    const ninjaTurtles = [
+        <h2>Donatello</h2>, 
+        <h2>Michaelangelo</h2>,
+        <h2>Rafael</h2>,
+        <h2>Leonardo</h2>
+    ]
+    return (
+        <main>
+            {ninjaTurtles}
+        </main>
+    )
+}
 ```
 
 ## ClassName
@@ -53,3 +69,20 @@ root.render {
 }
 ```
 
+## Import image
+If we are using vite, it will rearrange the code under the hood, compress all the code into a single file, and the structure of the folder may be different, so the relative path may not work.  
+```jsx
+import mrWhiskerson from "./images/mr-whiskerson.png"
+function App() {
+    return (
+        <div className="contacts">
+            <Contact
+                img={mrWhiskerson}
+                name="Mr. Whiskerson"
+                phone="(212) 555-1234"
+                email="mr.whiskaz@catnap.meow"
+            />
+        </div>
+    )
+}
+```

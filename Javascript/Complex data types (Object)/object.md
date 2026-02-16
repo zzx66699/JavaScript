@@ -87,11 +87,11 @@ let address = {
   city: 'Berlin',
 };
 address = { ...address, country: 'Germany' };
-// => {
-//   postalCode: '11011',
-//   city: 'Berlin',
-//   country: 'Germany',
-// }
+=> {
+  postalCode: '11011',
+  city: 'Berlin',
+  country: 'Germany',
+}
 ```
 
 
