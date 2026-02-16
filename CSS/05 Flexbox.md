@@ -30,6 +30,15 @@ button {
 }
 ```
 
+## justify-content and align-items
+```css
+    /* justify-content:
+    start, center, end, space-around, 
+    space-evenly, space-between
+    
+    align-items:
+    start, center, end */
+```
 ## flex-wrap
 ```css
 .thumbnails {

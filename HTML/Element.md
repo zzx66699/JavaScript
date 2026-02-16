@@ -47,6 +47,7 @@
 | `<nav>`         | Navigation section (menu links).                              |
 | `<header>`      | Header section of a page or article.                          |
 | `<main>`        | The main content area.                                        |
+| `<article>`     | a self-contained composition which is independently distributable or reusable, like blogs, news                                     |
 | `<section>`     | Logical section or topic block.                               |
 | `<footer>`      | Footer section.                                               |
 

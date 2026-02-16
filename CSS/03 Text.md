@@ -34,6 +34,16 @@ If there's no font-size set for all the parents' elements, it will take `16px` a
 
 It is not commonly used because of the compounding issues.
 
+
+## default margin
+h1 has the default margin
+```css
+main h1 {
+    margin: 0;
+}
+```
+
+
 ## Links and buttons
 - links are for navigation, go to another location.  
 - Buttons are for interaction. (Open a model)  

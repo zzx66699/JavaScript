@@ -43,6 +43,13 @@ When a child element touches its parent, the top and bottom margins will merge w
 </header>
 ```
 
+```css
+equals to margin top and margin bottom
+.facts-list > li {
+    margin-block: 10px;
+}
+```
+
 ### Margin collapse solution
 add padding to the parents element
 ```js

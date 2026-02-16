@@ -69,11 +69,9 @@ const weather = {
   cloud_with_lightning: '🌩️',
 };
 
-
-const { sun, 
-  cloud,  // By default, the variable names must match the property names
-  cloud_with_lightning: thunder   // or we can rename it by propertyName : newVariableName
-} = weather;
+// the variable name must match the property name
+// we can also rename it 
+const { sun, cloud,  cloud_with_lightning: thunder} = weather;
 
 // equals to
 const sun = weather.sun

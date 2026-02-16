@@ -1,0 +1,38 @@
+# Pseudo class
+```CSS
+/* unvisited link */
+a:link {
+  color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+  color: #00FF00;
+}
+
+
+/* selected link */
+a:active {
+  color: #0000FF;
+}
+```
+
+## hover and focus
+Remember to make the outline none
+```css
+input:focus, input:hover{
+    /* remove the default border when focus */
+    outline: none;
+    /* add the new border */
+    border: 1px solid red;
+}
+
+```
+
+## Pseudo Element
+## marker
+```css
+.facts-list > li::marker {
+    color: #61DAFB;
+}
+```
