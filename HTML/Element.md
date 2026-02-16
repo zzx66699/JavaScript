@@ -32,6 +32,7 @@
 | `<img>`         |                                                        | src
 | `<audio>`         |                                                         | controls
 | `<video>`         |                                                        | controls muted loop autoplay
+
 ```html
 <!-- tells the browser to use default video controls -->
 <audio controls>
@@ -40,7 +41,27 @@
     <source src="media/audio/scrimbaPodTom.mp3" type="audio/map3">
     <source src="media/audio/scrimbaPodTom.wav" type="audio/wav">
 </audio>
-````
+```
+
+## Form
+| Tag Name        | Meaning / Use                                                 | Attributes       | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| `<label>`       | Label for a form element.                                     |
+| `<button>`      | Clickable button.                                             | type
+| `<input>`       | Input field (text box, checkbox, etc.).                       | type name placeholder  id aria-label value accept="image/png, image/jpg"
+| `<select>` and `<option>` and `<optgroup>`      | Dropdown buttons.                       | value selected size multiple
+| `<textarea>`   | Long inputs.                   | 
+
+### Common validation attributes
+| Attributes        | Meaning / Use                                                 |    input type | 
+| --------------- | ------------------------------------------------------------- | ---------------- | 
+| required       |                               |
+| minlength      |   minlength="8"                                   |  text
+| maxlength      |                       |  text
+| max      |                       |  number
+| min      |    min="21"                   |  number
+|pattern| pattern="[a-zA-Z0-9]+" <br>pattern="[a-zA-Z]{3}"
+
 
 ## Table
 | Tag Name        | Meaning / Use                                                 | Attributes       | 

@@ -30,9 +30,16 @@ input:focus, input:hover{
 ```
 
 ## Pseudo Element
-## marker
+### marker
 ```css
 .facts-list > li::marker {
     color: #61DAFB;
+}
+```
+### before
+```css
+.add-ingredient-form > button::before {
+    content: "+";
+    margin-right: 5px;
 }
 ```

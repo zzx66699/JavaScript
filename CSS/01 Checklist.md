@@ -18,7 +18,17 @@ Once we add the box-sizing, the height and weight is set for the `whole div`, no
 
 ## form doesn't inherit the font family
 ```css
-input {
+input, button {
     font-family: inherit;
 }
+```
+
+## Common design
+### box-shadow
+```css
+/* for the header section */
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+
+/* for an input box */
+box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 ```
