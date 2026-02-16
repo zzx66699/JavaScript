@@ -1,6 +1,7 @@
-
-
+## Video
+Video height and weight should be always set by **pixels** only! 
 ## Margin & Padding & gap
+
 ### the em unit
 A margin / padding set in em is relative to the font size of the current element. We use `em` because it is proportional scaling.  
 
