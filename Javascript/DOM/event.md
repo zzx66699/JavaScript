@@ -29,6 +29,15 @@ form.addEventListener("submit", function(e){
 })
 ```
 
+## e.target & event.currentTarget
+| Feature                     | `event.target`                                | `event.currentTarget`                                  |
+| --------------------------- | --------------------------------------------- | ------------------------------------------------------ |
+| What it represents          | The element that actually triggered the event | The element that the event listener is attached to     |
+| Usually equals to           | The deepest clicked element                   | The element handling the event                         |
+| Safe to use for `FormData`? | ❌ Not always                                  | ✅ Yes (if listener is on `<form>`)                     |
+| Typical use case            | Detect what was clicked                       | Access the container or form                           |
+
+
 ## e.target.id - check which id is triggering the event
 ```html
 <div id="container">
@@ -109,3 +118,4 @@ search from the **element that cause the event** and to its parent and grandpare
 ```js
 const form = e.target.closest(".dictation-form")
 ```
+

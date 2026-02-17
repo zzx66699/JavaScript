@@ -11,6 +11,7 @@ export default function Contact(props) {
         </article>
     )
 }
+
 ```
 ```jsx 
 // App.jsx
@@ -18,12 +19,24 @@ import Contact from "./Contact"
 export default function App(props) {
     return (
         <main>
-            <Contact name="Jean"/>
-            <Contact name="David"/>
-            <Contact name="John"/>
+            <Contact name="Jean" location="Singapore"/>
+            <Contact name="David" location="Netherlands"/>
+            <Contact name="John" location="China"/>
         </main>
     )
 }
+```
+```jsx
+// Index.jsx
+import { createRoot } from "react-dom/client"
+import App from "./App"
+
+createRoot(document.getElementById("root")).render(<App />)
+
+// It will log out objects with all the keys and values that we passed in when calling the component
+>>> {name: "Jean", location="Singapore"}
+>>> {name: "David", location="Netherlands"}
+>>> {name: "John", location="China"}
 ```
 
 ## Destructure props
@@ -75,6 +88,7 @@ createRoot(document.getElementById('root')).render(
     />
 );
 ```
+
 ## Pass on object to props
 ```jsx
 export default function App() {

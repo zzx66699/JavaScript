@@ -4,7 +4,8 @@
 1. turn the JSX syntax(JSX elements) into calls to react.createElement  
 2. createElement function is turning them into **javascript object**   
 3. then React is able to interpret it and turn it into real dom nodes under the hood.   
-```js
+
+```jsx
 import { createRoot } from "react-dom/client"
 
 const root = createRoot(document.getElementById("root"))
@@ -18,6 +19,7 @@ root.render(
     reactElement
 )
 ```
+
 React can't render an regular object, but it can render an `array` of jsx element.
 ```jsx
 export default function App() {
@@ -86,3 +88,4 @@ function App() {
     )
 }
 ```
+

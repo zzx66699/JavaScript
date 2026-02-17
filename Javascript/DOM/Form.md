@@ -1,5 +1,4 @@
 # Form
-Form elements don't inherit font-settings in css.
 
 ## Accessibility
 always add a label and placeholder for the input form
@@ -10,12 +9,59 @@ always add a label and placeholder for the input form
 <!-- name is to reference form data after a form is submitted. -->
 <input 
     type="text" 
-    id="city" 
     name="city"
     placeholder="London"
-    class="city" 
-    required
 >
+```
+If there's no label, we should give it an aria-label
+```html
+<input 
+    type="text"
+    name="ingredient"
+    placeholder="e.g. oregano"
+    aria-label="Add ingredient"
+/>
+```
+
+## FormData function (a constructor function)
+It will return an **object** holding all the forms data.    
+It takes in the **HTML form element** as the parameter.   
+```js
+const loginForm = document.getElementById('login-form')
+
+loginForm.addEventListener('submit', function(e){
+    e.preventDefault()
+
+    const loginFormData = new FormData(loginForm)
+    console.log(loginFormData)
+    >>> FormData {}
+
+    // Use FormData.get(key) to get the value
+    // Put the name of the input element as the key
+    const name = loginFormData.get("astronautName")
+    const email = loginFormData.get('astronautEmail')
+})
+```
+```html
+<form id="login-form">
+    <label for="astronautName">Astronaut Name 👩‍🚀</label>
+    <input 
+        type="text" 
+        id="astronautName" 
+        name="astronautName"  
+        placeholder="Neil Armstrong"
+        required
+        >
+    <label for="astronautEmail">Astronaut Email</label>
+    <input 
+        type="email" 
+        id="astronautEmail" 
+        name="astronautEmail" 
+        placeholder="n.armstrong@nasa.com"
+        required
+        >
+    <button type="submit">submit</button>
+</form>    
 ```
 
 ## 1. Submit button
@@ -187,22 +233,5 @@ input.value = "";
 
 
 
-
-## FormData - return an object holding all the forms data
-```js
-const loginForm = document.getElementById('login-form')
-
-loginForm.addEventListener('submit', function(e){
-    e.preventDefault()
-
-    const loginFormData = new FormData(loginForm)
-    console.log(loginFormData)
-    >>> FormData {}
-
-    // use FormData.get(key) to get the value
-    console.log(loginFormData.get("name"))
-    >>> Jean
-})
-```
 
 
