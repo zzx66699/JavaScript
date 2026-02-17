@@ -39,6 +39,23 @@ createRoot(document.getElementById("root")).render(<App />)
 >>> {name: "John", location="China"}
 ```
 
+React can't render an regular object, but it can render an `array` of jsx element.
+```jsx
+export default function App() {
+    const ninjaTurtles = [
+        <h2>Donatello</h2>, 
+        <h2>Michaelangelo</h2>,
+        <h2>Rafael</h2>,
+        <h2>Leonardo</h2>
+    ]
+    return (
+        <main>
+            {ninjaTurtles}
+        </main>
+    )
+}
+```
+
 ## Destructure props
 ```jsx
 export default function Contact({img, name}) {

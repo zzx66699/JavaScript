@@ -16,7 +16,6 @@ numbers.length;
 // => 4
 ```
 
-
 ## [] - Indexing
 It returns an element, no an sub-array.
 ```js
@@ -39,6 +38,24 @@ console.log(numbers);
 >>> ['one', 'two', 3, 'four']
 ```
 
+## array.slice(start, end)
+creates a `sub-array`
+```js
+let arr = [1, 2, 3, 4, 5];
+
+let part = arr.slice(1, 4);
+
+console.log(part); // [2, 3, 4]
+console.log(arr);  // [1, 2, 3, 4, 5]
+```
+it's ok to use -index in slice
+```js
+arr.slice(-1)
+>>> [5]
+
+arr.slice(-2)
+>>>[4, 5]
+```
 
 ### .includes() - determines whether an array includes a certain value
 ```js
@@ -49,7 +66,6 @@ numbers.includes(1)
 numbers.includes("1")
 >>> false
 ```
-
 
 ## .filter()
 it is going through each of the element in an array and test one by one. 
@@ -67,8 +83,7 @@ console.log(adults)
 >>> [23, 56, 47, 70, 19, 23, 18]
 ```
 
-
-### .push() & .unshift()  - Add element and return the length
+## .push() & .unshift()  - Add element and return the length
 The .push() method adds one or more elements to the `end` of an array and returns the new `length` of the array.
 ```js
 const numbers = [1, 'two', 3, 'four'];
@@ -85,7 +100,7 @@ numbers;
 // => ['one', 1, 'two', 3, 'four']
 ```
 
-### .pop() & .shift() - Remove and return the removed element
+## .pop() & .shift() - Remove and return the removed element
 The pop() method removes the `last` element from an array and returns that element. 
 ```js
 const numbers = [1, 'two', 3, 'four'];
@@ -101,6 +116,27 @@ numbers.shift();
 console.log(numbers);
 
 >>> ['two', 3, 'four']
+```
+
+## .join() method
+concatenate elements of an array into a string and returns the new string
+```js
+const guestsArr = ['Amy', 'Clare', 'Keith', 'Dan'] 
+
+console.log(guestsArr.join(''))
+
+>>> AmyClareKeithDan
+```
+
+```js
+console.log(guestsArr.join('🐶'))
+
+>>> Amy🐶Clare🐶Keith🐶Dan
+```
+```js
+console.log(guestsArr.join(' '))
+
+>>> Amy Clare Keith Dan
 ```
 
 ## Shallow copy objects and arrays
@@ -129,29 +165,6 @@ console.log(userObj)
 [{userName: 'Wayne', password: '123456'}]
 {userName: 'Wayne', password: '123456'}
 ```
-
-
-## .join() method
-concatenate elements of an array into a string and returns the new string
-```js
-const guestsArr = ['Amy', 'Clare', 'Keith', 'Dan'] 
-
-console.log(guestsArr.join(''))
-
->>> AmyClareKeithDan
-```
-
-```js
-console.log(guestsArr.join('🐶'))
-
->>> Amy🐶Clare🐶Keith🐶Dan
-```
-```js
-console.log(guestsArr.join(' '))
-
->>> Amy Clare Keith Dan
-```
-
 
 ## .reduce() method
 Reduces the array into a single value.  
@@ -245,31 +258,40 @@ findPriceExtremes([
 ])
 ```
 
+## Array destructuring
+It is a concise way to extract values from an array and assign them to distinct `variables`.
 
-
-
-
-
-
-
-## array.slice(start, end)
-creates a `sub-array`
 ```js
-let arr = [1, 2, 3, 4, 5];
+const numberOfMoons = [0, 2, 14];
+const [venus, mars, neptune] = numberOfMoons;
 
-let part = arr.slice(1, 4);
-
-console.log(part); // [2, 3, 4]
-console.log(arr);  // [1, 2, 3, 4, 5]
+neptune;
+// => 14
 ```
-it's ok to use -index in slice
+Leaving a position unnamed (by not writing any variable name) silently ignores that position.
 ```js
-arr.slice(-1)
->>> [5]
+const deck = [5, 9, 7, 1, 8];
 
-arr.slice(-2)
->>>[4, 5]
+const [firstCard] = deck
+
+console.log(firstCard)
+>>> 5
 ```
+Example: Elyse takes three cards and quickly moves the top card to the back, making the middle card the first card and the old bottom card the middle card. She doesn't need to call a single function.
+```js
+// we will pass in an array of 3 card as the parameter
+export function shiftThreeCardsAround(deck) {
+    const [firstCard, secondCard, thirdCard] = deck;
+    return [secondCard, thirdCard, firstCard];
+}
+```
+
+
+
+
+
+
+
 
 ## Combine arrays
 `+` does NOT merge arrays. What actually happens:
@@ -419,29 +441,7 @@ arr.sort((item1, item2) => {
 )
 ```
 
-## Array destructuring
-It is a concise way to extract values from an array and assign them to distinct `variables`.
 
-```js
-const numberOfMoons = [0, 2, 14];
-const [venus, mars, neptune] = numberOfMoons;
-
-neptune;
-// => 14
-```
-Leaving a position unnamed (by not writing any variable name) silently ignores that position.
-```js
-const deck = [5, 9, 7, 1, 8];
-
-const [firstCard] = deck
-return firstCard;
-```
-Example: Elyse takes three cards and quickly moves the top card to the back, making the middle card the first card and the old bottom card the middle card. She doesn't need to call a single function.
-```js
-export function shiftThreeCardsAround(deck) {
-  const [firstCard, secondCard, thirdCard] = deck;
-  return [secondCard, thirdCard, firstCard];
-}
 ```
 
 

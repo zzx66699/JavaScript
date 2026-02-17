@@ -9,25 +9,7 @@ As we scroll down, we will find the target key, which is an object itself.
 As we extend the target, we will find the following attributes.  
 
 
-## e.preventDefault() 
-To prevent getting a query string in the URL.
-```html
-<!-- give the whole form an id -->
-<form id="form">
-    <input type="text">Name
-    <input type="email">Email
-    <input type="number">Age
-</form>
-```
-```js
-const form = document.getElementById("form")
 
-// e represents the event, which is submit 
-// use form as the element, not the submit button
-form.addEventListener("submit", function(e){
-    e.preventDefault()
-})
-```
 
 ## e.target & event.currentTarget
 | Feature                     | `event.target`                                | `event.currentTarget`                                  |

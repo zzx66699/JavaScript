@@ -52,39 +52,21 @@ null == undefined // true
 ## Ternary operator
 This operator is a short form for writing an if/else statement.   
 The syntax is `condition ? consequent-expression : alternative-expression`.   
-If the condition is truthy, left expression will be executed. Otherwise, the right expression will be executed.  
-
 A common usage of ternary operator is to update the value of a variable depending on whether the condition is met.
 ```js
-const grade = 95
-
+let answer = isGoingOut ? "Yes" : "No"
+```
+```js
 console.log(`You have ${grade > 90 ? 'passed' : 'failed'} the exam.`)
-
-// => You have passed the exam.
 ```
 ### 3 situations
 ```js
-const exerciseTimeMins = 40
-let message = ''
-
-if (exerciseTimeMins < 30) {
-    message = 'You need to try harder!'
-}
-else if(exerciseTimeMins < 60) {
-    message = 'Doing good!'
-}
-else {
-    message = 'Excellent!'
-} 
-
-// equals to 
 const message = exerciseTimeMins < 30 ? 'You need to try harder!' 
     : exerciseTimeMins < 60 ? 'Doing good!' 
     : 'Excellent!'
 
-console.log(message)
 ```
-### Don't assign any value
+### Assign no value
 ```js
 const likeIconClass = tweet.isLiked ? 'liked' : ''
 ```

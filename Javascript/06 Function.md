@@ -161,7 +161,17 @@ export function memoizeTransform(f) {
 ```
 
 ## Callback functions
-Callback functions are functions passed as arguments  
-### ???
-Example: https://exercism.org/tracks/javascript/exercises/fruit-picker/edit
+A callback function is a function that is passed into another function as a parameter and executed later.
+```js
+function greet(name) {
+    console.log("Hello " + name)
+}
 
+function processUserInput(callback) {
+    const name = "Tom"
+    callback(name)
+}
+
+// the function greet is passed to the funtion processUserInput as a parameter
+processUserInput(greet)
+```
