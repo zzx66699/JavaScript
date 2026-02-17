@@ -18,6 +18,7 @@
 | max      |                       |  number
 | min      |    min="21"                   |  number
 |pattern| pattern="[a-zA-Z0-9]+" <br>pattern="[a-zA-Z]{3}"
+|defaultValue|  set a default value to the input so that the user don't need to type everytime <br> defaultValue="Jean"| 
 
 
 ## Accessibility
@@ -97,26 +98,27 @@ continueBtn.addEventListener('click', function(){
 ```
 
 ## Radio buttons
-Use `<fieldset>` and `<legend>` tags to group the set and provide the context for screen reader users
+- Use `<fieldset>` and `<legend>` tags to group the set and provide the context for screen reader users
+- We must assign a `value` (a value property) to the option of each radio, and that is the value that we are going to get from the formData. 
+- Giving the radios the same `name` can create a radio group in which only one choice can be selected. 
 ```html
 <fieldset class="radio-container">
     <legend>Do you have cats?</legend>
     <label for="yes">Yes</label>
-    <!-- giving the radios the same name can create a radio group in which only one choice can be selected -->
     <input 
         type="radio" 
         name="cats"
-        id="yes"
         value="name"
-        class="contact-radio">
+        class="contact-radio"
+        id="yes">
 
     <label for="no">No</label>
     <input 
         type="radio" 
         name="cats"
-        id="no"
         value="no"
-        class="contact-radio">
+        class="contact-radio"
+        id="no">
 </fieldset>
 ```
 ```js

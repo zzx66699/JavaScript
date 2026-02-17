@@ -70,6 +70,17 @@ loginForm.addEventListener('submit', function(e){
 })
 ```
 
+## Reset the form
+```js
+function handleSubmit(event) {
+    event.preventDefault()
+    const formEl = event.currentTarget
+    const formData = new FormData(formEl)
+    const email = formData.get("email")
+    formEl.reset()
+  }
+```
+
 ## Get input value
 The value is always in the format of `string`!
 ```js
