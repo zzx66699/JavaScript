@@ -90,3 +90,45 @@ function App() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 ```
+
+## Radio, dropdown, textArea - formData.get
+get will give us a `value`.
+```jsx
+function signUp(formData) {
+
+    const employmentStatus = formData.get("employmentStatus")
+
+    console.log(employmentStatus)
+    >>> full-time
+  }
+```
+## Checkbox - formData.getAll
+If we use get, we will only get 1 value.  
+getAll will give us an `array` of all the selected values.
+```jsx
+function signUp(formData) {
+
+    const dietaryRestrictions = formData.getAll("dietaryRestrictions")
+
+    console.log(dietaryRestrictions)
+    >>> ['kosher', 'vegan', 'gluten-free']
+  }
+```
+
+## Object.fromEntries
+- It will give us an `object` of all the values from the form.  
+- If we have a **checkbox** in the form, we need to separately get the value of it and combine it with the value object. 
+```jsx
+function signUp(formData) {
+    const data = Object.fromEntries(formData)
+    // dietaryRestrictions is an array
+    const dietaryRestrictions = formData.getAll("dietaryRestrictions")
+    const allData = {
+      ...data,
+      // the key will become dietaryRestrictions automatically, and value become the array
+      // same as dietaryRestrictions: dietaryRestrictions
+      dietaryRestrictions
+    }
+    console.log(allData)
+}
+```

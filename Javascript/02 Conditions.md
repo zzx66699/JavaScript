@@ -80,7 +80,7 @@ true || false   // true
 // and
 true && false   // false
 ```
-### Short-circuiting - Use logical operator to assign value to a variable
+### || - Default Fallback
 ```js
 const jobHunter = {
     name: 'Tom Chant',
@@ -89,12 +89,13 @@ const jobHunter = {
 
 console.log(`${jobHunter.name}'s work location is ${jobHunter.jobSearchArea || 'Worldwide'}`)
 ```
+### && - Conditional execution
+It works like an **if** condition: if the left is true, then the right will be executed
 ```js
 const user = {
     userName: 'Tom',
-    // role: 'admin',
+    role: 'admin',
 }
-// it works like an if considtion: if the left is true, then the right will be executed
 user.role === 'admin' && console.log('Dashboard Displayed')
 ```
 

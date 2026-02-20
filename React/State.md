@@ -1,29 +1,46 @@
 # State
 If the value of a **local variable** changes, no code will be re-run.   
-When the value of `state` changes and the setter function is called, React will re-render the component. However, **simply modifying the state value directly** doesn't always trigger the re-render in React. 
+When the value of `state` changes and the setter function is called, React will re-render the component which contains the states. However, **simply modifying the state value directly** doesn't always trigger the re-render in React. 
 ```jsx
+// App.jsx
 import React from "react"
+import List from "./List"
 
 export default function App() {
 
-  const [myFavoriteThings, setMyFavoriteThings] = React.useState([])
-  
-  const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁"]
-  const thingsElements = myFavoriteThings.map(thing => <p key={thing}>{thing}</p>)
+    const [myFavoriteThings, setMyFavoriteThings] = React.useState([])
+    
+    const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁"]
 
-  function addFavoriteThing() {
-    // We'll work on this next, nothing to do here yet.
-    myFavoriteThings.push("Test")
-  }
-  
-  return (
-    <main>
-      <button onClick={addFavoriteThing}>Add item</button>
-      <section aria-live="polite">
-        {thingsElements}
-      </section>
-    </main>
-  )
+    // key helps React identify which items in an array have changed, been added, or removed, so it can update the DOM efficiently.
+    // key can't be passed to the child component
+    const thingsElements = myFavoriteThings.map(thing => 
+        <List 
+            key={thing}
+            element={thing}
+        />
+    )
+
+    function addFavoriteThing() {
+        myFavoriteThings.push("Test")
+    }
+    
+    return (
+        <main>
+        <button onClick={addFavoriteThing}>Add item</button>
+        <section aria-live="polite">
+            {thingsElements}
+        </section>
+        </main>
+    )
+}
+```
+```jsx
+// List.jsx
+export default function List(props) {
+    return (
+        <p>{props.element}</p>
+    )
 }
 ```
 
@@ -47,8 +64,6 @@ const React = {
 ```jsx
 import { useState } from "react"
 ```
-
-
 - Destructuring means we 
 ```jsx
 const obj = { name: "Tom", age: 18 }
@@ -221,3 +236,6 @@ function toggleFavorite() {
     })
 }
 ```
+
+## Local state vs. shared state
+Shared state: Set the function in the parent component and pass it down the to the child component 

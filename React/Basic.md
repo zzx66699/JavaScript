@@ -77,6 +77,49 @@ function Header() {
 
 }
 ```
+- `className=` is an attribute, not a JavaScript expression.
+- Curly braces {} in JSX are only for JavaScript expressions (like variables, logic, or calculations).  
+- Never put it in the {} like `{props.on ? className="on" : className=""}`
+```jsx
+export default function Pad(props) {
+    console.log(props.on)
+    
+    return (
+        <button 
+            style={{backgroundColor: props.color}}
+            className={props.on ? "on" : ""}
+        ></button>
+    )
+}
+```
+
+## Styles
+`camelCase` all the css attributes. 
+```jsx
+import React from "react"
+import padsData from "./pads"
+
+export default function App({ darkMode }) {
+    const [pads, setPads] = React.useState(padsData)
+
+    const styles = {
+        backgroundColor: darkMode ? "#222222" : "#cccccc"
+    }
+
+    const buttonElements = pads.map(pad => (
+        <button style={styles} key={pad.id}></button>
+    ))
+
+    return (
+        <main>
+            <div className="pad-container">
+                {buttonElements}
+            </div>
+        </main>
+    )
+}
+```
+
 
 ## Fragment
 The Fragment will not be showned up in the root div. So it is sibling elements directly under the div section
@@ -122,4 +165,78 @@ function App() {
 Template string is a javascript expression, so we also need to wrap it up in a curly brackets
 ```jsx
 aria-label={`Current answer is ${isGoingOut ? "Yes" : "No"}`}
+```
+
+## Pass data 
+- The data can only be passed from the **parents** component to the child component. No child to child (between siblings). No child to parents. 
+- In this example, since we got the `state` userName in the Header component, the Body component can never get that state data. 
+
+```jsx
+// App.jsx
+import React from "react"
+import Header from "./Header"
+import Body from "./Body"
+
+export default function App() {
+    return (
+        <main>
+            <Header />
+            <Body />
+        </main>
+    )
+}
+```
+```jsx
+// Header.jsx
+import React from "react"
+import avatar from "./icons/user.png"
+
+// We get the state here
+export default function Header() {
+    const [userName, setUserName] = React.useState("Joe")
+
+    return (
+        <header>
+            <img src={avatar} />
+            <p>{userName}</p>
+        </header>
+    )
+}
+```
+```jsx
+// Body.jsx
+import React from "react"
+
+export default function Body() {
+    return (
+        <section>
+            <h1>Welcome back, ___!</h1>
+        </section>
+    )
+}
+```
+Instead, we should move the state to the parent component. 
+```jsx
+// App.jsx
+import React from "react"
+import Header from "./Header"
+import Body from "./Body"
+
+export default function App() {
+    const [userName, setUserName] = React.useState("Bob")
+    
+    return (
+        <main>
+            <Header userName={userName} />
+            <Body userName={userName} />
+        </main>
+    )
+}
+```
+
+## React component to render markdown
+https://www.npmjs.com/package/react-markdown/v/8.0.6#use 
+```jsx
+import ReactMarkdown from 'react-markdown'
+<ReactMarkdown># Hello, *world*!</ReactMarkdown>
 ```

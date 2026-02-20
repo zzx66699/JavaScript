@@ -88,6 +88,26 @@ If there's no label, we should give it an aria-label
     <input type="checkbox" id="accept-terms">
 </div>
 ```
+- Use `<fieldset>` and `<legend>` tags to group the set and provide the context for screen reader users
+- Give each input element a `name` and a `value` so we can get from formData.
+```html
+<fieldset>
+    <legend>Dietary restrictions:</legend>
+    <label>
+    <input type="checkbox" name="dietaryRestrictions" value="kosher" />
+    Kosher
+    </label>
+    <label>
+    <input type="checkbox" name="dietaryRestrictions" value="part-time" />
+    Vegan
+    </label>
+    <label>
+    <input type="checkbox" name="dietaryRestrictions" defaultChecked="true" value="full-time" />
+    Gluten-free
+    </label>
+</fieldset>
+
+```
 We can check if the checkbox is checked
 ```js
 const acceptTerms = document.getElementById('accept-terms')
@@ -99,8 +119,9 @@ continueBtn.addEventListener('click', function(){
 
 ## Radio buttons
 - Use `<fieldset>` and `<legend>` tags to group the set and provide the context for screen reader users
-- We must assign a `value` (a value property) to the option of each radio, and that is the value that we are going to get from the formData. 
+- We must assign a `value` to the option of each radio, and that is the value that we are going to get from the formData. 
 - Giving the radios the same `name` can create a radio group in which only one choice can be selected. 
+- `defaultChecked` is a property for the radio buttons
 ```html
 <fieldset class="radio-container">
     <legend>Do you have cats?</legend>
@@ -109,6 +130,7 @@ continueBtn.addEventListener('click', function(){
         type="radio" 
         name="cats"
         value="name"
+        defaultChecked="true"
         class="contact-radio"
         id="yes">
 
@@ -123,19 +145,25 @@ continueBtn.addEventListener('click', function(){
 ```
 ```js
 const yesBtn = document.getElementById("yes")
-//                    for checked radio, the event is `change`
+// for checked radio, the event is `change`
 yesBtn.addEventListen("change", function(){
     ...
 })
 ```
 
 ## Dropdown button
+- Give the select element a `name` and give each option a `value`.  
+- `defaultValue` property will show the given value as the default value.  
+- `size` represents how many items shown in the scroll bar without scroll.   
+- We can put a `value of empty string` and put some instruction texts as the 1st option, make it `disabled`, and make the **select** element `required`.
+- Group options together in the `optgroup` if needed.
+
 ```html
 <section class="container">
     <form>
         <label for="superpowers">Choose Your Superpower:</label>
-        <!--                     how many items shown in the scroll bar without scroll -->
-        <select id="superpowers" size="6">
+        <select id="superpowers" size="6" name="superpowers" defaultValue="indigo" required>
+            <option value="" disabled>-- Choose a color --</option>
             <optgroup label="physical">
                 <option value="flight">Flight</option>
                 <option value="invisibility">Invisibility</option>
