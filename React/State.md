@@ -1,45 +1,57 @@
 # State
-If the value of a **local variable** changes, no code will be re-run.   
-When the value of `state` changes and the setter function is called, React will re-render the component which contains the states. However, **simply modifying the state value directly** doesn't always trigger the re-render in React. 
+- State gives us opportunities to maintain data between rerenders of React and cause rerender in React.   
+- The UI should be a function of state. React’s approach is not "Manually manipulate the DOM and change things directly." Instead, it is
+"Update the state, and let React automatically rerender the UI based on that state."
+```jsx
+// state = false → render Login
+// state = true → render Dashboard
+// so the UI is decided by state 
+const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+return (
+  <div>
+    {isLoggedIn ? <Dashboard /> : <Login />}
+  </div>
+)
+```
+- If the value of a **local variable** changes, no code will be re-run.   
+- When the value of `state` changes and the setter function is called, React will re-render the component which contains the states. However, **simply modifying the state value directly** doesn't always trigger the re-render in React. 
+
+## Example of state
+- In this example, when the state `myFavoriteThings` updates, the page will be rerendered.
 ```jsx
 // App.jsx
 import React from "react"
-import List from "./List"
+import ThingList from "./ThingList"
 
 export default function App() {
+    const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁"]
 
     const [myFavoriteThings, setMyFavoriteThings] = React.useState([])
     
-    const allFavoriteThings = ["💦🌹", "😺", "💡🫖", "🔥🧤", "🟤🎁"]
-
     // key helps React identify which items in an array have changed, been added, or removed, so it can update the DOM efficiently.
     // key can't be passed to the child component
     const thingsElements = myFavoriteThings.map(thing => 
-        <List 
+        <thingList 
             key={thing}
-            element={thing}
+            thing={thing}
         />
     )
-
-    function addFavoriteThing() {
-        myFavoriteThings.push("Test")
-    }
     
     return (
         <main>
-        <button onClick={addFavoriteThing}>Add item</button>
-        <section aria-live="polite">
-            {thingsElements}
-        </section>
+            <section>
+                {thingsElements}
+            </section>
         </main>
     )
 }
 ```
 ```jsx
-// List.jsx
-export default function List(props) {
+// thingList.jsx
+export default function ThingList(props) {
     return (
-        <p>{props.element}</p>
+        <p>{props.thing}</p>
     )
 }
 ```
@@ -55,8 +67,8 @@ React.useState()
 - This is the React variable
 ```jsx
 const React = {
-  useState: function() { ... },
-  useEffect: function() { ... }
+    useState: function() { ... },
+    useEffect: function() { ... }
 }
 ```
 
@@ -79,7 +91,8 @@ import { useState } from "react"
 ```
 
 ## useState()
-Without passing in any parameter, it will return an `array`, which the 1st element is undefined, and 2nd element is a function. 
+- use `useState()` to create a state
+- Without passing in any parameter, it will return an `array`, whose 1st element is **undefined**, and 2nd element is a function. 
 ```jsx
 import React from "react"
 const result = React.useState()
@@ -119,8 +132,9 @@ export function App() {
     const [isImportant, setIsImportant] = React.useState("Yes")
 
      // Run the function will update the State to the new value and re-run the code
-    // However, If we just call the function here, it will run again and again ❌ 
+    // If we call the function here, it will run again and again ❌ 
     setIsImportance("Definitely!")
+
     return (
         <main>
             <h1 className="title">Is state important to know?</h1>
@@ -128,9 +142,9 @@ export function App() {
         </main>
     )
 }
-
 ```
-The correct way of doing it ✅
+- The correct way of doing it is to run the `setter function` in a `handle function`.   
+- The handle function will only run when some event is triggered.   
 ```jsx
 import React from "react"
 
