@@ -2,14 +2,19 @@
 
 `DOM manipulation comes with a cost!`
 
+## Take control by the tag element
+```js
+document.body
+```
 
 ## Write the HTML text
+* textContent
 ```js
 // grab a hold of the box-btn and store it in a variable called boxBtn
 let boxBtn = document.getElementById("box-btn");
 boxBtn.textContent = "Open the box";
 ```
-another way
+* innerText
 ```js
 let boxBtn = document.getElementById("box-btn");
 // innerText will automatically remove the space between output elements
@@ -17,31 +22,32 @@ boxBtn.innerText = "Open the box";
 ```
 
 ## Write the HTML element
-```js
-const container = document.getElementById("container")
-container.innerHTML = "<button onclick='buy()'>Buy!</button>"
-```
+
 ```js
 let array = ["aa", "bb", "cc"]
 const ulEl = document.getElementById("ul-el");
 let lineItems = "";
+
 for (let i = 0; i < array.length; i++) {
-                       // not a string
     lineItems += "<li>" + array[i] + "</li>"
 }
+
 // Run the DOM out of the loop to reduce the cost
 ulEl.innerHTML = lineItems;
 ```
+* When writing HTML with Javascript, **attribute values** must be `quoted`
+```js
+src = "xxx"
+container.innerHTML = `<img src="${src}">`
+```
 
-Without the innerHTML, we will need to use createElement and appendChild to do the same thing
-### createElement
+* Without the innerHTML, we will need to use createElement and appendChild to do the same thing
+
 ```js
 const h1 = document.createElement("h1")
 h1.textContent = "This is imperative coding"
 h1.className = "header"
-```
-### appendChild
-```js
+
 document.getElementById("root").appendChild(h1)
 ```
 

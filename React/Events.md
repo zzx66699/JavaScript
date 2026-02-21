@@ -1,3 +1,37 @@
+## Handle functions
+https://react.dev/reference/react-dom/components/common
+### MouseEvent handler function 
+```JSX
+<div
+    onClick={e => console.log('onClick')}
+    onMouseEnter={e => console.log('onMouseEnter')}
+    onMouseOver={e => console.log('onMouseOver')}
+    onMouseDown={e => console.log('onMouseDown')}
+    onMouseUp={e => console.log('onMouseUp')}
+    onMouseLeave={e => console.log('onMouseLeave')}
+/>
+```
+
+### Input - onChange event
+```jsx
+import { useState } from "react"
+
+export default function Main() {
+    ...
+
+    function handleChange() {
+
+    }
+
+    return (
+        <label>Bottom Text
+            <input
+                onChange={handleChange}
+            />
+    )
+}
+```
+
 ## Add eventListener
 ```jsx
 function App() {
@@ -34,19 +68,41 @@ function App() {
 }
 ```
 
-## Handle functions
-https://react.dev/reference/react-dom/components/common
-### MouseEvent handler function 
-```JSX
-<div
-    onClick={e => console.log('onClick')}
-    onMouseEnter={e => console.log('onMouseEnter')}
-    onMouseOver={e => console.log('onMouseOver')}
-    onMouseDown={e => console.log('onMouseDown')}
-    onMouseUp={e => console.log('onMouseUp')}
-    onMouseLeave={e => console.log('onMouseLeave')}
-/>
+## value
+Update the state property when the user input something as the topText
+```jsx
+import { useState } from "react"
+
+export default function Main() {
+    const [meme, setMeme] = useState(
+        {
+            topText: "One does not simply",
+            bottomText: "Walk into Mordor",
+            imageUrl: "http://i.imgflip.com/1bij.jpg"
+        }
+    )
+
+    function handleEvent(e){
+
+        const {value} = e.currentTarget
+
+        setMeme(prevMeme => {
+            return (
+                {...meme, topText: value}
+            )
+        })
+    }
+
+    return (
+        <main>
+            <input 
+                type="text"
+                onChange={handleEvent}
+            />
+        </main>
+    )
+
+}
+
 ```
-
-
 

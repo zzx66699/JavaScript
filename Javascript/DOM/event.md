@@ -1,15 +1,12 @@
 # Event 
+* We will get PointerEvent object in the dev tool.  
+* As we scroll down, we will find the target key, which is an object itself.  
+* As we extend the target, we will find the following attributes.  
 ```js
 document.addEventListener("click", function(e){
     console.log(e)
 })
 ```
-We will get PointerEvent object in the dev tool.  
-As we scroll down, we will find the target key, which is an object itself.  
-As we extend the target, we will find the following attributes.  
-
-
-
 
 ## e.target & event.currentTarget
 | Feature                     | `event.target`                                | `event.currentTarget`                                  |

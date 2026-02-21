@@ -1,4 +1,16 @@
 # Type conversions
+
+## Convert between string and array
+```JS
+let myLeads = `["www.awesomelead.com"]`
+// Turn the myLeads string into an array
+myLeads = JSON.parse(myLeads)
+
+// Turn the array into a string 
+myLeads = JSON.stringify(myLeads)
+```
+
+
 ## Convert object values into an array
 ```js
 const loginCredentials = {

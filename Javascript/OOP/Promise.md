@@ -1,21 +1,7 @@
 # Promise
 A Promise represents a value that will be available later. It is an object that stands for a future result of an async operation.
 
-## Wait for the Async finish first and then run the other code: 
-`async` & `await`  
-await does not change how Promises work — it only makes the code look synchronous.  
-```js
-async function loadData() {
-  try {
-    const data = await fetch("/data");
-    // fulfilled
-  } catch (error) {
-    // rejected
-  } finally {
-    // always runs
-  }
-}
-```
+
 
 
 
