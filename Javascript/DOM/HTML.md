@@ -2,9 +2,11 @@
 
 `DOM manipulation comes with a cost!`
 
-## Take control by the tag element
+## Built-in shortcut properties
 ```js
 document.body
+document.head
+document.title
 ```
 
 ## Write the HTML text

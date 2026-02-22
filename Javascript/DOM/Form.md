@@ -1,20 +1,20 @@
 # Form
 
-## e.preventDefault() 
-To prevent getting a query string in the URL and refresh the page. 
-```html
-<!-- give the whole form an id -->
-<form id="form">
-    <input type="text">Name
-    <input type="email">Email
-    <input type="number">Age
-</form>
-```
+## Add event listener for form submission
+* Use `form` as the element, not the submit button
+* Event name is "submit"
 ```js
 const form = document.getElementById("form")
 
-// use form as the element, not the submit button
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", function(){
+    ...
+})
+```
+
+## e.preventDefault() 
+To prevent getting a query string in the URL and refresh the page. 
+```js
+document.getElementById("form").addEventListener("submit", function(e){
     e.preventDefault()
 })
 ```
@@ -94,6 +94,13 @@ console.log(input.value);
 const input = document.getElementById("input");
     // value property
 input.value = "";
+```
+
+## Clear the form 
+It will clear all the input areas in the form
+```js
+const form = document.getElementById("new-post")
+form.reset()
 ```
 
 

@@ -1,5 +1,6 @@
 # Grid
 Margin no longer collapse.  
+The default layout of grid is just a single column that lay out all the element vertically.
 
 ```CSS
 .grid-container {

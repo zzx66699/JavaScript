@@ -13,8 +13,8 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-## for of - a nicer way of iterating
-For each item in an iterable object like Array, String. Not for `Object`.
+## for of 
+For each item in an iterable object like `Array`, String. Not for `Object`.
 ```js
 const characters = [
     {
@@ -26,16 +26,6 @@ const characters = [
         title: 'Sorcerer',
         emoji: '🧙',
         powers: ['magic', 'invisibility', 'necromancy'],
-    },
-    { 
-        title: 'Ogre',
-        emoji: '👹',
-        powers: ['power', 'stamina', 'shapeshifting'],
-    },  
-    { 
-        title: 'Unicorn',
-        emoji: '🦄',
-        powers: [ 'flight', 'power', 'purity'],
     }
 ]
 

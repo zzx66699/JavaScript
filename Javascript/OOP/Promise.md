@@ -1,7 +1,37 @@
 # Promise
 A Promise represents a value that will be available later. It is an object that stands for a future result of an async operation.
 
+## .then() and Asynchronous Javascript
+It lets the `other codes run first` before the response from the fetch request come back from the server
+```js
+console.log("The first console log")
 
+fetch("https://dog.ceo/api/breeds/image/random")
+    .then(response => response.json())
+    .then(data => console.log(data))
+
+console.log("The second console log")
+
+>>> 
+The first console log
+The second console log
+{message: 'https://images.dog.ceo/breeds/affenpinscher/n02110627_12003.jpg', status: 'success'}
+```
+
+## `async` & `await`  
+await does not change how Promises work — it only makes the code look synchronous.  
+```js
+async function loadData() {
+  try {
+    const data = await fetch("/data");
+    // fulfilled
+  } catch (error) {
+    // rejected
+  } finally {
+    // always runs
+  }
+}
+```
 
 
 

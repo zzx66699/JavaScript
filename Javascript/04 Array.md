@@ -46,7 +46,6 @@ let arr = [1, 2, 3, 4, 5];
 let part = arr.slice(1, 4);
 
 console.log(part); // [2, 3, 4]
-console.log(arr);  // [1, 2, 3, 4, 5]
 ```
 it's ok to use -index in slice
 ```js

@@ -31,6 +31,7 @@ always add a label and placeholder for the input form
 <input 
     type="text" 
     name="city"
+    id="city"
     placeholder="London"
 >
 ```
