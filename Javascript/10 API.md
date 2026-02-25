@@ -148,5 +148,4 @@ Representational State Transfer
 
 ![alt text](../Images/Nested-resources.png)
 
-##
 

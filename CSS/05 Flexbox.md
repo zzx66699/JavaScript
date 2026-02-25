@@ -18,6 +18,7 @@ button {
     align-self: flex-start;
 }
 ```
+![alt text](../Images/Align-self.png)
 
 ### margin auto on flexbox children
 ```css

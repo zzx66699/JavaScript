@@ -29,17 +29,24 @@ input:focus, input:hover{
 
 ```
 
-## Pseudo Element
-### marker
+# Pseudo Element
+## marker
 ```css
 .facts-list > li::marker {
     color: #61DAFB;
 }
 ```
-### before
+
+## before
 ```css
 .add-ingredient-form > button::before {
     content: "+";
     margin-right: 5px;
 }
 ```
+
+## nth-of-type
+```js
+div.card-slot:nth-of-type(1) {
+    margin-bottom: 50px;
+}

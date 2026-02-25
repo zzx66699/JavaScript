@@ -1,3 +1,21 @@
+# ARIA
+* ARIA shorts for Accessible Rich Internet Applications. 
+* It fills in a gap when HTML's native sementics fall short. 
+
+## aria-checked
+Indicates whether the element is checked (true), unchecked (false)
+```html
+<div 
+    id="toggleTheme" 
+    onclick="toggleTheme()" 
+    role="switch" 
+    aria-checked="false" 
+    tabindex="0"
+>
+    Light Mode
+</div>
+```
+
 ## aria-label
 direct the assistive technology how it should describe how the button is supposed to do
 ```html

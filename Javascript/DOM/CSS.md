@@ -70,16 +70,6 @@ sortBtn.addEventListener("click", function(){
         <div class="message-text" id="message-text-2">Hasta la Vista Baby! 😎</div>
         <div class="date" id="message-date-2">27 Aug</div>
     </div> 
-    <div class="message unread">
-        <div class="from" id="message-from-3">The Queen</div>
-        <div class="message-text" id="message-text-3">One is not amused 👑</div>
-        <div class="date" id="message-date-3">23 Aug</div>
-    </div>
-    <div class="message unread">
-        <div class="from" id="message-from-4">James Bond</div>
-        <div class="message-text" id="message-text-4">Casino night tonight! 🍹</div>
-        <div class="date" id="message-date-4">20 Aug</div>
-    </div>
 </div>
 ```
 
@@ -91,7 +81,6 @@ sortBtn.addEventListener("click", function(){
 .read {
     background: green;
 }
-
 ```
 
 ```js

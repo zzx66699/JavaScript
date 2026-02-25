@@ -1,4 +1,6 @@
 # Function
+Functions are a first-class object in JavaScript
+
 ## Function Declarations
 JavaScript moves declarations to the top of the scope before running the code.
 ```js
@@ -11,10 +13,41 @@ add(1, 3);
 >>> 4
 ```
 
+## How does return work
+```js
+const distanceWalkedMilesArr = [140, 153, 161, 153, 128, 148]
+const conversionFactorMilesToKm = 1.6
+```
+* The `comma operator` in the return evaluates both expressions but returns only the last one.
+```js
+const distanceWalkedKmArr = distanceWalkedMilesArr.map(function(distanceMiles, index){
+    return distanceMiles * conversionFactorMilesToKm, index
+})
+
+console.log(distanceWalkedKmArr)
+>>> [0, 1, 2, 3, 4, 5]
+```
+* If we want to return more than 1 value, we can wrap them in an array or object
+```js
+const distanceWalkedKmArr = distanceWalkedMilesArr.map(function(distanceMiles, index){
+    return [index, distanceMiles * conversionFactorMilesToKm]
+})
+
+console.log(distanceWalkedKmArr)
+>>> [[0, 224], [1, 244.8], [2, 257.6], [3, 244.8], [4, 204.8], [5, 236.8]]
+```
+```js
+const distanceWalkedKmArr = distanceWalkedMilesArr.map(function(distanceMiles, index){
+    return `${index}: ${distanceMiles * conversionFactorMilesToKm}`
+})
+
+console.log(distanceWalkedKmArr)
+['0: 224', '1: 244.8', '2: 257.6', '3: 244.8', '4: 204.8', '5: 236.8']
+```
+
 ## Function Expression
 Function Expression is assigned to a variable and is not hoisted.  
-
-We need to declare a const and assign it with an anonymous function. 
+We need to declare a const and assign it with an anonymous function.  
 ```js
 // in this example, the function returns nothing.  
 const greeting = function(){
@@ -41,17 +74,16 @@ console.log(function(){
 >>> Hello!
 >>> undefined
 ```
+
 If we add the `return`
 ```js
 const greeting2 = function(){
   return "Hello World!"
 };
 
-
 console.log(greeting())   
 >>> Hello World!
 ```
-
 
 ## Arrow function expression
 - If the function body contains only a return statement, the {} and the return keyword can be omitted.   
@@ -80,7 +112,6 @@ const multiply = a1 => a1 * 5
 const zero = () => 0
 ```
 
-
 ## ...name - Rest parameters 
 We got a function that takes in parameters but we don't know how many arguments that is going to be passed to it.   
 
@@ -108,7 +139,6 @@ concat('one');
 concat('one', 'two', 'three');
 // => 'one two three'
 ```
-
 
 
 
@@ -160,18 +190,3 @@ export function memoizeTransform(f) {
 }
 ```
 
-## Callback functions
-A callback function is a function that is passed into another function as a parameter and executed later.
-```js
-function greet(name) {
-    console.log("Hello " + name)
-}
-
-function processUserInput(callback) {
-    const name = "Tom"
-    callback(name)
-}
-
-// the function greet is passed to the funtion processUserInput as a parameter
-processUserInput(greet)
-```

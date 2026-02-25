@@ -67,18 +67,34 @@ numbers.includes("1")
 ```
 
 ## .filter()
-it is going through each of the element in an array and test one by one. 
+* It is going through each of the element in an array and test one by one. 
+* After testing, each of the element will return `true` or `false`
 ``` js
 const ages = [1, 5, 9, 23, 56, 10, 47, 70, 10, 19, 23, 18]
 
-//                         pass in a function, the parameter will be assign to each of the element in turn 
+// pass in a function, the parameter will be assign to each of the element in turn 
 const adults = ages.filter(function(age){
-    // don't forget the return 
+    if (age >= 18){
+        return true
+    }
+    else {
+        return false
+    }
+})
+```
+
+This is too complex, and we can simplify it by 
+```js
+const adults = ages.filter(function(age){
     return age >= 18
 })
-console.log(adults)
+```
 
-//  it will return an array
+Or with arrow function
+```js
+const adults = ages.filter(age => age >= 18)
+
+console.log(adults)
 >>> [23, 56, 47, 70, 19, 23, 18]
 ```
 
@@ -138,31 +154,107 @@ console.log(guestsArr.join(' '))
 >>> Amy Clare Keith Dan
 ```
 
-## Shallow copy objects and arrays
-When creating an const which holds an array of objects, JavaScript creates that array in memory. So the const `holds a reference` to the array in memory.   
+## .map() method 
+* It gives us a new `array` and we're going to store the array in a const.   
+* If we don't need a new array it returns, we don't need to use map method.  
 
-When we copy an object from that array, JS **will not create the object in the memory.** So the object also holds a reference to the original array in the memory. 
-
-When the object changes, the array in the memory changes, so the original const array also changes!
 ```js
-const usersArray = [
-    {
-        userName: 'Tom',
-        password: '123456'
-    }
+function getLabelsHtml(text, sender, ...staffObjs) {
+    return staffObjs.map(staffObj => 
+`<div class="label-card">
+    <p>Dear ${staffObj.name}</p>
+    <p>${text}</p>
+    <p>Best wishes,</p>
+    <p>${sender}</p>
+</div>`
+    ).join('')
+}
+
+const text = 'Thank you for all your hard work throughout the year! 🙏🎁'
+const sender = 'Tom'
+
+document.getElementById('labels-container').innerHTML = getLabelsHtml(
+    text, 
+    sender, 
+    {name: 'Sally'}, 
+    {name: 'Mike'}, 
+    {name: 'Rob'}, 
+    {name: 'Harriet'}
+    ) 
+```
+* We can also use .map() to only get a part of the array
+```js
+// turn the array into an array of string email addresses of only the people in the array who voted. 
+
+const voters = [
+    {name: "Joe", email: "joe@joe.com", voted: true},
+    {name: "Jane", email: "jane@jane.com", voted: true},
+    {name: "Bo", email: "bo@bo.com", voted: false},
+    {name: "Bane", email: "bane@bane.com", voted: false}
 ]
 
-const userObj = usersArray[0]
+const email = voters.filter(function(voter) {
+    return voter.voted
+}).map(function(voter) {
+    return voter.email
+})
 
-userObj.userName = "Wayne"
+console.log(email)
 
-console.log(usersArray)
-console.log(userObj)
+>>> ['joe@joe.com', 'jane@jane.com']
+```
 
->>>
+## .forEach() method
+Use the forEach() method when you don't need to create a new array
+```js
+// pass in an anonymous function with a parameter, which will be each individual element in the array
+characters.forEach(function(character){
+	console.log(character)
+})
+```
 
-[{userName: 'Wayne', password: '123456'}]
-{userName: 'Wayne', password: '123456'}
+```js
+// know the index of the element that you are working on
+characters.forEach(function(character, index){
+    console.log(character, index)
+})
+
+>>> 
+0 Ninja
+1 Sorcerer
+2 Ogre
+3 Unicorn
+```
+### return undefined error
+It doesn't return a new array! It returns `undefined`! We need to avoid using `return` in the forEach() function. 
+```js
+const playlistHtml = playlistArr.forEach(function(track){
+    return `
+    <section class="card">
+        <div class="card-start">
+            <img src="/images/${track.albumArt}">
+        </div>
+    </section>
+    `
+}).join('')
+
+console.log(playlistHtml)
+>>> undefined
+```
+The correct way is to create the array first and push element to the array. 
+```js
+const playlistHtml = []
+
+playlistArr.forEach(function(track){
+    playlistHtml.push( `
+    <section class="card">
+        <div class="card-start">
+            <img src="/images/${track.albumArt}">
+        </div>
+    </section>
+    `)
+})   // the join() method can't be chained here, because forEach() method returns undefined. 
+document.getElementById('container').innerHTML = playlistHtml.join('')  // the join() method should be chained here
 ```
 
 ## .reduce() method
@@ -175,7 +267,7 @@ let arr = [1, 2, 3, 4]
 // then, the 2nd element is added up to the accumulator, and the 3nd element become the current Value.
 arr.reduce((total, currentValue) => total + currentValue)
 ```
-### change the default total
+
 ```js
 const studentsArr = [
     {
@@ -197,7 +289,6 @@ studentsArr.reduce((total, currentValue) =>
 // 0 is the extra parameter for the reduce method. It means that the first total is 0, and the first curretnValue is the first element in the array
 ```
 
-
 ```js
 // Classify the numbers by whether they are odd or not
 arr.reduce(
@@ -214,7 +305,6 @@ arr.reduce(
 );
 // => { even: [2, 4], odd: [1, 3] }
 ```
-
 
 ## Spread operator - expand and join arrays
 It expands an array into `a list of elements`. 
@@ -284,6 +374,34 @@ export function shiftThreeCardsAround(deck) {
     return [secondCard, thirdCard, firstCard];
 }
 ```
+
+## Shallow copy objects and arrays
+When creating an const which holds an array of objects, JavaScript creates that array in memory. So the const `holds a reference` to the array in memory.   
+
+When we copy an object from that array, JS **will not create the object in the memory.** So the object also holds a reference to the original array in the memory. 
+
+When the object changes, the array in the memory changes, so the original const array also changes!
+```js
+const usersArray = [
+    {
+        userName: 'Tom',
+        password: '123456'
+    }
+]
+
+const userObj = usersArray[0]
+
+userObj.userName = "Wayne"
+
+console.log(usersArray)
+console.log(userObj)
+
+>>>
+
+[{userName: 'Wayne', password: '123456'}]
+{userName: 'Wayne', password: '123456'}
+```
+
 
 
 

@@ -169,3 +169,14 @@ Contain the flow in the parent elements
 ## !important
 Use `!important` to override all the styles, but `no use it` if neccessary!
 
+## Hide the element
+```css
+.container {
+    visibility: hidden;
+}
+```
+```css
+.container {
+    display: none; 
+}
+```

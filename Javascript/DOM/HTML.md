@@ -24,7 +24,6 @@ boxBtn.innerText = "Open the box";
 ```
 
 ## Write the HTML element
-
 ```js
 let array = ["aa", "bb", "cc"]
 const ulEl = document.getElementById("ul-el");
@@ -54,24 +53,45 @@ document.getElementById("root").appendChild(h1)
 ```
 
 ## Listen to the event
-Anonymous function
 ```js
 let boxBtn = document.getElementById("box-btn");
-                     // event    function
+
 boxBtn.addEventListener("click", function() {
     console.log("I want to open the box")
 })
 ```
-call the funtion in the addEventListener
-```js
-//                                  no parenthesis 
-document.addEventListener('submit', logChosenSuperpower)
 
-function logChosenSuperpower(e){
-    e.preventDefault()
-    console.log(document.getElementById('superpowers').value)
+## Function setTimeout - set the delay
+The time is in milliseconds 
+```js
+setTimeout(
+    function(){
+        console.log("Hello. world!")
+    }, 
+    3000
+)
+```
+
+## children property
+* element.children returns a live HTMLCollection （`array`）which contains all of the child elements of the element upon which it was called.
+* If the element has no element children, then children is an empty list with a length of 0.
+
+```html
+<div id="cards">
+    <div class="card-slot"></div>
+    <div class="card-slot"></div>
+</div>
+```
+```jsx
+const myElement = document.getElementById("cards");
+for (const child of myElement.children) {
+    ...
 }
 ```
+
+
+
+
 
 ## .querySelector()
 ### Psuodo selector
@@ -95,8 +115,6 @@ const header = document.querySelector("#header");
 // it will select the first p element
 const firstParagraph = document.querySelector("p");
 ```
-
-
 
 ## .parentElement
 ```js
@@ -135,15 +153,6 @@ clearBtn.addEventListener('click', function(){
 })
 ```
 
-
-
-## setTimeout - set the delay
-```js
-setTimeout(function(){
-    console.log("Hello. world!")
-// the delayed milliseconds 
-}, 3000)
-```
 
 ## .disabled
 ```html
