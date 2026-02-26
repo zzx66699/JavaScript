@@ -50,3 +50,13 @@ input:focus, input:hover{
 div.card-slot:nth-of-type(1) {
     margin-bottom: 50px;
 }
+```
+
+## disabled
+```css
+.decrement:disabled{
+    color: whitesmoke;
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+```

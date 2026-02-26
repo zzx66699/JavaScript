@@ -18,8 +18,10 @@ const question = document.getElementById('question')
 revealBtn.addEventListener('click', function(){
 //  element.style.property
     answer.style.display = 'block'
-//                 change the dash property to camel case
+//  change the dash property to camel case
     question.style.backgroundColor = '#68e1fd'
+
+    document.body.style.backgroundImage = `url("https://images.unsplash.com/photo-1471879832106")`
 })
 ```
 

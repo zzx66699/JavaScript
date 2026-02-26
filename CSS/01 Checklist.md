@@ -32,3 +32,16 @@ box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0
 /* for an input box */
 box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 ```
+
+### Body background image
+```css
+body {
+    background: no-repeat center center fixed; 
+    background-size: cover; 
+}
+```
+
+### text-shadow to stand the text out from the white background
+```css
+text-shadow: 0px 0px 20px #aaaaaa;
+```

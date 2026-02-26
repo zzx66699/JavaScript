@@ -258,8 +258,52 @@ const values = {
   ]
 };
 
- ```
+```
 
+## JSON
+Javascript object notation  
+* Valid JSON: https://jsonlint.com/
+* The key needs to be surrounded by `double quotes`
+* In most cases, it would be 1 object or an array of objects
+```json
+// person.json
+{
+    "name": "Joe Schmoe",
+    "age": 42,
+    "adult": true,
+    "hobbies": [
+        "skiing",
+        "surfing",
+        "piccolo"
+    ]
+}
+```
+```json
+[
+    {
+        "name": "Sarah",
+        "age": 35,
+        "birthplace": "Scotland",
+        "hobbies": [
+            "violin",
+            "singing",
+            "crafting"
+        ]
+    },
+    {
+        "name": "Michael",
+        "age": 56,
+        "birthplace": "South Africa",
+        "hobbies": [
+            "skateboarding",
+            "guitar"
+        ]
+    }
+]
+```
+* Check JSON in dev tool
+* Network → Fetch/XHR = check the requested API
+![Check JSON in dev tool](../Images/JSON-in-dev-tool.png)
 
 
 

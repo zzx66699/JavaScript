@@ -72,6 +72,11 @@ setTimeout(
 )
 ```
 
+## Function setInterval - run the function every xxx milliseconds
+```js
+setInterval(getCurrentTime(), 1000)
+```
+
 ## children property
 * element.children returns a live HTMLCollection （`array`）which contains all of the child elements of the element upon which it was called.
 * If the element has no element children, then children is an empty list with a length of 0.
@@ -89,7 +94,11 @@ for (const child of myElement.children) {
 }
 ```
 
-
+## Image src Property
+Change the image src in javascript
+```js
+document.getElementById("myImg").src = "hackanm.gif";
+```
 
 
 

@@ -1,4 +1,5 @@
 # Async
+`Promise` and `callback` functions are 2 methods of doing asynchronous codes. 
 
 ## Callback functions
 A callback function is a function that is passed into another function as a parameter and executed later.
@@ -21,7 +22,8 @@ We have used lots of callback functions already, including:
 * addEventListener()
 
 ## Promise
-* A Promise represents a value that will be available later. It is an `object` that stands for a future result of an async operation.
+* A Promise is an `object` that take a bit of time to finish but will eventually finish running. It stands for a future result of an async operation.
+* The object that we return from the fetch is a promise
 * Pending => Resolved or Rejected
 * We can't directly log out the promise
 ```js
@@ -32,9 +34,9 @@ console.log(data)
 ```
 * It has a method called `.then()`
 
-## .then() and Asynchronous Javascript
+## Fulfilled => .then()
 * It lets the `other codes run first` before the response from the fetch request come back from the server
-* .then() is the part that will run if the promise is fulfilled
+* .then() is the part that will run if the promise is `fulfilled`
 ```js
 console.log("The first console log")
 
@@ -48,6 +50,26 @@ console.log("The second console log")
 The first console log
 The second console log
 {message: 'https://images.dog.ceo/breeds/affenpinscher/n02110627_12003.jpg', status: 'success'}
+```
+
+## Rejected => .catch()
+* It runs only if the Promise is rejected
+* It receives an `error` as the parameter
+```js
+fetch("/data").catch(error => {console.log("something wenr wrong!")});
+```
+
+If there's an error and the .catch() is not set up, js will give us a warning like this
+```js
+unhandledrejection PromiseRejectionEvent
+```
+
+We can directly console log the `error itself`
+```js
+fetch("/data")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
 ```
 
 ## promise chaining
@@ -83,137 +105,65 @@ fetch("https://apis.scrimba.com/bored/api/activity")
 
 >>> "World"
 ```
+
 ## `async` & `await`  
-await does not change how Promises work — it only makes the code look synchronous.  
+* await does not change how Promises work — it only makes the code look synchronous.  
+* async goes before the function
+* await goes before a method / a function that returns a promise
 ```js
-async function loadData() {
-  try {
-    const data = await fetch("/data");
-    // fulfilled
-  } catch (error) {
-    // rejected
-  } finally {
-    // always runs
-  }
+async function getWeather() {
+	const res = await fetech("")
+	const data = await res.json()
+	console.log(data)
 }
 ```
-
-
-
-### A simple flow
-#### producing codes
-- the first parameter corresponds to the internalResolve
-- the second parameter corresponds to the internalReject
+* Use async in the `callback function`
 ```js
-let promise = new Promise((resolve, reject) => {
-
-  let fileloaded = true; 
-
-  if(filedloaded){
-    // Whatever you pass to resolve becomes the value received by .then.
-    resolve("File loaded"); 
-  }
-  else{
-    reject("File not loaded")
-  }
-})
-```
-We can imagine this is happening in the internal.
-```js
-const internalResolve = function (value) {
-  // 1. mark the promise as fulfilled
-  // 2. store the value
-  // 3. schedule .then callbacks
-};
-
-const internalReject = function (error) {
-  // 1. mark the promise as rejected
-  // 2. store the error
-  // 3. schedule .catch callbacks
-};
-
-executor(internalResolve, internalReject);
-```
-#### consuming code
-if the promise is resolved, what we want to do
-```js
-// When fulfilled → call resolve with the stored value
-// when failed -> call reject function with the stored error
-promise.then(value => consolo.log(value))  
-       .catch(error => console.log(error))
-```
-
-### No value is stored
-```js
-const promise = new Promise(resolve => {
-  setTimeout(resolve, 5000); 
-});
-
-// Whatever the fulfilled value, It only cares about the promise is fulfilled. 
-// No argument is passed. 
-promise.then(() => console.log("Thanks for waiting!"))
->>> Thanks for waiting!
-
-promise.then(value => {
-  console.log(value);
-});
->>> undefined
-
-```
-
-
-### pending — the starting state
-```js
-const promise = fetch("/data");
-```
-At this moment:
-- The asynchronous operation has started
-- The result is not available yet
-- The Promise is pending
-
-The Promise represents a `future result`, not the result itself.
-
-### Resolution — only one possible outcome
-
-A Promise can leave pending in exactly one way, and this is irreversible.
-
-
-#### Case A: Success → fulfilled
-```js
-fetch("/data").then(data => {
-  // runs only if the Promise is fulfilled
+navigator.geolocation.getCurrentPosition(async position => {
+    const res = await fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
+    if (!res.ok) {
+        throw Error("Weather data not available")
+    }
+    const data = await res.json()
+    const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+    document.getElementById("weather").innerHTML = `
+        <img src=${iconUrl} />
+    `
 });
 ```
-- The async operation completes successfully
-- The Promise becomes fulfilled
-- It now has a resulting value
-
-#### Case B: Failure → rejected
-```js
-fetch("/data").catch(error => {
-  // runs only if the Promise is rejected
-});
+* Await can also be used at the `top level of a module`, without the need of a function
+```html
+<script src="index.js" type="module"></script>
 ```
-- The async operation fails
-- The Promise becomes rejected
-- It now has a failure reason (error)
+```js
+const res = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+const data = await res.json()
+```
 
-### Final state rule 
-Once a Promise leaves pending, it is settled forever.  
-- It cannot change from fulfilled to rejected
-- It cannot change from rejected to fulfilled
-- It can never go back to pending
-
-.then, .catch, and .finally on the timeline
+## try...catch...finally 
 ```js
 fetch("/data")
-  .then(result => {
-    // fulfilled
-  })
-  .catch(error => {
-    // rejected
-  })
-  .finally(() => {
-    // always runs
-  });
+	.then(result => {
+		// fulfilled
+	})
+	.catch(error => {
+		// rejected
+	})
+	.finally(() => {
+		// always runs
+	})
+```
+Change it into `async` ... `await`
+```jsx
+try {
+	res = await fetch("/data")
+	if (!res.ok) {
+		throw New Error("Something went wrong")
+	}
+	data = await res.json()
+} catch (err) {
+	console.error(err)
+} finally {
+
+}
 ```
