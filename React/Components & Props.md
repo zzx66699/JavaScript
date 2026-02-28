@@ -1,3 +1,8 @@
+## Component
+React components are meant to be `pure functions`.
+* When it is given same props or state, should always return the same interface. 
+* Rendering and re-rendering a component will never have any kind of side effect on an outside system
+
 # Props
 Use {} when we want to get into a javasript expression  
 We can pass neccessary props to the component when creating a new instance of the component
