@@ -484,3 +484,70 @@ export default function Pad(props) {
     )
 }
 ```
+
+## Pass data 
+- The data can only be passed from the **parents** component to the child component. No child to child (between siblings). No child to parents. 
+- In this example, since we got the `state` userName in the Header component, the Body component can never get that state data. 
+
+```jsx
+// App.jsx
+import React from "react"
+import Header from "./Header"
+import Body from "./Body"
+
+export default function App() {
+    return (
+        <main>
+            <Header />
+            <Body />
+        </main>
+    )
+}
+```
+```jsx
+// Header.jsx
+import React from "react"
+import avatar from "./icons/user.png"
+
+// We get the state here
+export default function Header() {
+    const [userName, setUserName] = React.useState("Joe")
+
+    return (
+        <header>
+            <img src={avatar} />
+            <p>{userName}</p>
+        </header>
+    )
+}
+```
+```jsx
+// Body.jsx
+import React from "react"
+
+export default function Body() {
+    return (
+        <section>
+            <h1>Welcome back, ___!</h1>
+        </section>
+    )
+}
+```
+Instead, we should move the state to the parent component. 
+```jsx
+// App.jsx
+import React from "react"
+import Header from "./Header"
+import Body from "./Body"
+
+export default function App() {
+    const [userName, setUserName] = React.useState("Bob")
+    
+    return (
+        <main>
+            <Header userName={userName} />
+            <Body userName={userName} />
+        </main>
+    )
+}
+```

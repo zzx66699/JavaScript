@@ -25,6 +25,10 @@ input, button {
 
 ## Common design
 ### box-shadow
+* X and Y offsets relative to the element 
+* blur 
+* spread radius
+* color
 ```css
 /* for the header section */
 box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);

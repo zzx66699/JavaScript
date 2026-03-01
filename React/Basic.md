@@ -21,14 +21,34 @@ React.createElement("div", null, "Hello")
 
 5. The browser renders the real DOM.
 
-## react & react-dom 
+## react-dom
+```jsx
+import ReactDOM from "react-dom/client"
+import App from "./App"
 
-| Library         | 负责什么                          |
-| --------- | ----------------------------- |
-| react     | 组件、hooks、createElement、虚拟 DOM |
-| react-dom | 把虚拟 DOM 渲染成真实 DOM             |
+ReactDOM
+    .createRoot(document.getElementById("root"))
+    .render(<App />)
+```
+or another way
+```jsx
+import { createRoot } from "react-dom/client"
 
-### react
+const root = createRoot(document.getElementById("root"))
+
+const reactElement = <h1>Hello from JSX!</h1>
+
+// Vite change jsx syntax into the createElement syntax which creates a js object under the line. 
+
+console.log(reactElement)
+>>> {type: 'h1', key: null, props: {children: 'Hello from JSX!'}, _owner: null, _store: {}}
+
+root.render(
+    reactElement
+)
+```
+
+## react
 ```jsx
 // From react(package)，take the default export，and assign it to a variable called React
 import React from "react"
@@ -47,27 +67,49 @@ console.log(React)
 import banana from "react" 
 ```
 
-### react-dom
+## return HTML
+* Alway put the parent opening tag on the same line as the `return` 
 ```jsx
-// react-dom/client(package) doesn't have default export, so we need to use a named export
-import { createRoot } from "react-dom/client"
+// ❌
+return 
+    <main>
+    </main>
 
-const root = createRoot(document.getElementById("root"))
-
-const reactElement = <h1>Hello from JSX!</h1>
-
-// Vite change jsx syntax into the createElement syntax which creates a js object under the line. 
-
-console.log(reactElement)
->>> {type: 'h1', key: null, props: {children: 'Hello from JSX!'}, _owner: null, _store: {}}
-
-root.render(
-    reactElement
+// ✅
+return <main>
+        </main>
+```
+* Or we can wrap up the HTML into a parenthesis
+```jsx
+return (
+    <main>
+    </main>
 )
 ```
 
+## Fragment
+The Fragment will not be showned up in the root div. So it is sibling elements directly under the div section
+```jsx
+import { Fragment } from "react"
 
-## ClassName
+root.render {
+    <Fragment>
+        <header></header>
+        <main></main>
+    </Fragment>
+}
+```
+We can also just skip the Fragment and use <> instead
+```jsx
+root.render {
+    <>
+        <header></header>
+        <main></main>
+    </>
+}
+```
+
+### ClassName
 Because React is turning React element into dom, and in vannila javascript we use `xx.ClassName.add()`, in JSX we should also use `className` instead of class
 ```jsx
 function Header() {
@@ -121,27 +163,7 @@ export default function App({ darkMode }) {
 ```
 
 
-## Fragment
-The Fragment will not be showned up in the root div. So it is sibling elements directly under the div section
-```jsx
-import { Fragment } from "react"
 
-root.render {
-    <Fragment>
-        <header></header>
-        <main></main>
-    </Fragment>
-}
-```
-We can also just skip the Fragment and use <> instead
-```jsx
-root.render {
-    <>
-        <header></header>
-        <main></main>
-    </>
-}
-```
 
 ## Import image
 If we are using vite, it will rearrange the code under the hood, compress all the code into a single file, and the structure of the folder may be different, so the relative path may not work.  
@@ -165,73 +187,6 @@ function App() {
 Template string is a javascript expression, so we also need to wrap it up in a curly brackets
 ```jsx
 aria-label={`Current answer is ${isGoingOut ? "Yes" : "No"}`}
-```
-
-## Pass data 
-- The data can only be passed from the **parents** component to the child component. No child to child (between siblings). No child to parents. 
-- In this example, since we got the `state` userName in the Header component, the Body component can never get that state data. 
-
-```jsx
-// App.jsx
-import React from "react"
-import Header from "./Header"
-import Body from "./Body"
-
-export default function App() {
-    return (
-        <main>
-            <Header />
-            <Body />
-        </main>
-    )
-}
-```
-```jsx
-// Header.jsx
-import React from "react"
-import avatar from "./icons/user.png"
-
-// We get the state here
-export default function Header() {
-    const [userName, setUserName] = React.useState("Joe")
-
-    return (
-        <header>
-            <img src={avatar} />
-            <p>{userName}</p>
-        </header>
-    )
-}
-```
-```jsx
-// Body.jsx
-import React from "react"
-
-export default function Body() {
-    return (
-        <section>
-            <h1>Welcome back, ___!</h1>
-        </section>
-    )
-}
-```
-Instead, we should move the state to the parent component. 
-```jsx
-// App.jsx
-import React from "react"
-import Header from "./Header"
-import Body from "./Body"
-
-export default function App() {
-    const [userName, setUserName] = React.useState("Bob")
-    
-    return (
-        <main>
-            <Header userName={userName} />
-            <Body userName={userName} />
-        </main>
-    )
-}
 ```
 
 ## React component to render markdown
